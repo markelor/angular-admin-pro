@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-  
+
   public menu = [];
 
   cargarMenu() {
@@ -29,8 +29,8 @@ export class SidebarService {
   //     icono: 'mdi mdi-folder-lock-open',
   //     submenu: [
   //       { titulo: 'Usuarios', url: 'usuarios' },
-  //       { titulo: 'Hospitales', url: 'hospitales' },
-  //       { titulo: 'Médicos', url: 'medicos' },
+  //       { titulo: 'Deportes', url: 'deportes' },
+  //       { titulo: 'Jugadores', url: 'jugadores' },
   //     ]
   //   },
   // ];

@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Aspecto</h4>
+        <h6 class="card-subtitle">Actualizar información</h6>
+
+        <form class="form-horizontal p-t-20" [formGroup]="aspectoForm" (submit)="guardarAspecto()">
+          <ng-container formArrayName="aspectosArray">
+            <ng-container *ngFor="let aspectoItem of aspectosArray.controls; let i=index">
+              <div [formGroupName]="i" class="form-group row">
+                <!--Aspecto-->
+                <label for="aspecto" class="col-sm-3 control-label">Aspecto</label>
+                <div class="col-sm-9">
+                  <div class="input-group">
+                <select class="form-control" formControlName="aspecto">
+                  <option value="">Seleccione Aspecto</option>
+                  <option *ngFor="let aspecto of aspectos" [value]="aspecto">
+                    {{ aspecto }}
+                  </option>
+                </select>
+              </div>
+                </div>
+                <!--Grado aspecto-->
+                <label for="gradoAspecto" class="col-sm-3 control-label">Grado Aspecto</label>
+                <div class="col-sm-9">
+                  <div class="input-group">
+                    <div></div>
+                    <input type="number" formControlName="gradoAspecto" class="form-control" id="gradoAspecto">
+                  </div>
+                </div>
+                <!--Orbe-->
+                <label for="orbe" class="col-sm-3 control-label">Orbe</label>
+                <div class="col-sm-9">
+                  <div class="input-group">
+                    <div></div>
+                    <input type="number" formControlName="gradoAspecto" class="form-control" id="orbe">
+                  </div>
+                </div>
+                <!--Puntos por grado-->
+                <label for="puntosPorGrado" class="col-sm-3 control-label">Puntos Por Grado</label>
+                <div class="col-sm-9">
+                  <div class="input-group">
+                    <div></div>
+                    <input type="text" formControlName="puntosPorGrado" class="form-control"
+                      id="puntosPorGrado">
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <div class="form-group row m-b-0">
+            <div class="offset-sm-3 col-sm-12 ">
+              <button (click)="anadirAspecto()" type="button" class="btn btn-success waves-effect waves-light right">
+                <i class="fa fa-save"></i>
+                Anadir
+              </button>
+            </div>
+          </div>
+          <div class="form-group row m-b-0">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" [disabled]="aspectoForm.invalid" class="btn btn-success waves-effect waves-light">
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

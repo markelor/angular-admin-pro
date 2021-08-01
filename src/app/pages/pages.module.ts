@@ -18,12 +18,15 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
-import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
-import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
-import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { DeportesComponent } from './mantenimientos/deportes/deportes.component';
+import { JugadoresComponent } from './mantenimientos/jugadores/jugadores.component';
+import { JugadorComponent } from './mantenimientos/jugadores/jugador.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-
-
+import { AspectoComponent } from './mantenimientos/aspectos/aspecto.component';
+import { AspectosComponent } from './mantenimientos/aspectos/aspectos.component';
+import { PartidosComponent } from './mantenimientos/partidos/partidos.component';
+import { PartidoComponent } from './mantenimientos/partidos/partido.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -38,9 +41,13 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     RxjsComponent,
     PerfilComponent,
     UsuariosComponent,
-    HospitalesComponent,
-    MedicosComponent,
-    MedicoComponent,
+    DeportesComponent,
+    JugadoresComponent,
+    JugadorComponent,
+    PartidosComponent,
+    PartidoComponent,
+    AspectosComponent,
+    AspectoComponent,
     BusquedaComponent,
   ],
   exports: [
@@ -50,14 +57,15 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     PagesComponent,
     AccountSettingsComponent
   ],
-  imports: [ 
+  imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    DataTablesModule
   ]
 })
 export class PagesModule { }

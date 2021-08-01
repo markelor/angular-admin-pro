@@ -11,9 +11,13 @@ import { PerfilComponent } from './perfil/perfil.component';
 
 // Mantenimientos
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
-import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
-import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
-import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { DeportesComponent } from './mantenimientos/deportes/deportes.component';
+import { PartidosComponent } from './mantenimientos/partidos/partidos.component';
+import { PartidoComponent } from './mantenimientos/partidos/partido.component';
+import { JugadoresComponent } from './mantenimientos/jugadores/jugadores.component';
+import { JugadorComponent } from './mantenimientos/jugadores/jugador.component';
+import { AspectosComponent } from './mantenimientos/aspectos/aspectos.component';
+import { AspectoComponent } from './mantenimientos/aspectos/aspecto.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
 
@@ -29,12 +33,16 @@ const childRoutes: Routes = [
   { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
 
   // Mantenimientos
-  { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Matenimiento de Hospitales' }},
-  { path: 'medicos', component: MedicosComponent, data: { titulo: 'Matenimiento de Medicos' }},
-  { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Matenimiento de Medicos' }},
+  { path: 'deportes', component: DeportesComponent, data: { titulo: 'Mantenimiento de Deportes' }},
+  { path: 'jugadores', component: JugadoresComponent, data: { titulo: 'Mantenimiento de Jugadores' }},
+  { path: 'jugador/:id', component: JugadorComponent, data: { titulo: 'Mantenimiento de Jugador' }},
+  { path: 'partidos', component: PartidosComponent, data: { titulo: 'Mantenimiento de Partidos' }},
+  { path: 'partido/:id', component: PartidoComponent, data: { titulo: 'Mantenimiento de Partido' }},
+  { path: 'aspectos', component: AspectosComponent, data: { titulo: 'Mantenimiento de Aspectos' }},
+  { path: 'aspecto/:id', component: AspectoComponent, data: { titulo: 'Mantenimiento de Aspecto' }},
 
   // Rutas de Admin
-  { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Matenimiento de Usuarios' }},
+  { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' }},
 ]
 
 

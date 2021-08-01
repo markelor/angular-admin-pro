@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Jugador</h4>
+        <h6 class="card-subtitle">Actualizar información</h6>
+
+        <form class="form-horizontal p-t-20" [formGroup]="jugadorForm" (submit)="guardarJugador()">
+
+          <div class="form-group row" *ngIf="jugadorSeleccionado">
+            <label for="jugadorSeleccionado" class="col-sm-3 control-label">Foto</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <img [src]="jugadorSeleccionado.img | imagen: 'jugadores'" class="w200" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="nombre" class="col-sm-3 control-label">Nombre</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="ti-user"></i></div>
+                <input type="text" formControlName="nombre" class="form-control" id="nombre">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="deporte" class="col-sm-3 control-label">Deporte</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="form-control" formControlName="deporte">
+                  <option value="">Seleccione Deporte</option>
+                  <option *ngFor="let deporte of deportes" [value]="deporte._id">
+                    {{ deporte.nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nacion" class="col-sm-3 control-label">Nacion</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="text" formControlName="nacion" class="form-control" id="nacion">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ciudad" class="col-sm-3 control-label">Ciudad</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="text" formControlName="ciudad" class="form-control" id="ciudad">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="latitud" class="col-sm-3 control-label">Latitud</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="number" formControlName="latitud" class="form-control" id="latitud">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="longitud" class="col-sm-3 control-label">Longitud</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="number" formControlName="longitud" class="form-control" id="longitud">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="fechaNacimiento" class="col-sm-3 control-label">Fecha de nacimiento</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="text" formControlName="fechaNacimiento" class="form-control" id="fechaNacimiento">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tiempo" class="col-sm-3 control-label">Tiempo</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="text" formControlName="tiempo" class="form-control" id="tiempo">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tiempoUniversal" class="col-sm-3 control-label">Tiempo universal</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <div></div>
+                <input type="text" formControlName="tiempoUniversal" class="form-control" id="tiempoUniversal">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="fiabilidad" class="col-sm-3 control-label">Fiabilidad</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="form-control" formControlName="fiabilidad">
+                  <option value="">Seleccione Fiabilidad</option>
+                  <option *ngFor="let fiabilidad of fiabilidadCarta" [value]="fiabilidad">
+                    {{ fiabilidad }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="deporte" class="col-sm-3 control-label">Comprobado</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="form-control" formControlName="comprobado">
+                  <option value="">Seleccione Comprobación</option>
+                  <option *ngFor="let comprobado of comprobarCarta" [value]="comprobado">
+                    {{ comprobado }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row m-b-0">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" [disabled]="jugadorForm.invalid" class="btn btn-success waves-effect waves-light">
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col animated fadeIn fast" *ngIf="deporteSeleccionado">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Deporte</h4>
+        <h6 class="card-subtitle">{{ deporteSeleccionado.nombre }}</h6>
+
+        <img [src]="deporteSeleccionado.img | imagen:'deportes'" class="img-thumbnail" />
+
+      </div>
+    </div>
+
+  </div>
+</div>

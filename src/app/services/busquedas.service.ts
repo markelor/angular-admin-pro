@@ -4,18 +4,17 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 
 import { Usuario } from '../models/usuario.model';
-import { Hospital } from '../models/hospital.model';
-import { Medico } from '../models/medico.model';
+import { Deporte } from '../models/deporte.model';
+import { Jugador } from '../models/jugador.model';
+import { Aspecto } from '../models/aspecto.model';
 
 const base_url = environment.base_url;
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BusquedasService {
-
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) {}
 
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -24,62 +23,68 @@ export class BusquedasService {
   get headers() {
     return {
       headers: {
-        'x-token': this.token
-      }
-    }
+        'x-token': this.token,
+      },
+    };
   }
 
-  private transformarUsuarios( resultados: any[] ): Usuario[] {
-
+  private transformarUsuarios(resultados: any[]): Usuario[] {
     return resultados.map(
-      user => new Usuario(user.nombre, user.email, '', user.img, user.google, user.role, user.uid )  
+      (user) =>
+        new Usuario(
+          user.nombre,
+          user.email,
+          '',
+          user.img,
+          user.google,
+          user.role,
+          user.uid
+        )
     );
   }
 
-  private transformarHospitales( resultados: any[] ): Hospital[] {
+  private transformarDeportes(resultados: any[]): Deporte[] {
     return resultados;
   }
 
-  private transformarMedicos( resultados: any[] ): Medico[] {
+  private transformarJugadores(resultados: any[]): Jugador[] {
+    return resultados;
+  }
+  private transformarAspectos(resultados: any[]): Aspecto[] {
     return resultados;
   }
 
-  busquedaGlobal( termino: string ) {
-
-    const url = `${ base_url }/todo/${ termino }`;
-    return this.http.get( url, this.headers );
-
+  busquedaGlobal(termino: string) {
+    const url = `${base_url}/todo/${termino}`;
+    return this.http.get(url, this.headers);
   }
 
+  buscar(
+    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'aspectos',
+    termino: string
+  ) {
+    const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;
+    return this.http
+      .get<Usuario[] | Deporte[] | Jugador[]>(url, this.headers)
+      .pipe(
+        map((resp: any) => {
+          switch (tipo) {
+            case 'usuarios':
+              return this.transformarUsuarios(resp.resultados);
 
-  buscar( 
-      tipo: 'usuarios'|'medicos'|'hospitales',
-      termino: string
-    ) {
+            case 'deportes':
+              return this.transformarDeportes(resp.resultados);
 
-    const url = `${ base_url }/todo/coleccion/${ tipo }/${ termino }`;
-    return this.http.get<any[]>( url, this.headers )
-            .pipe(
-              map( (resp: any ) => { 
+            case 'jugadores':
+              return this.transformarJugadores(resp.resultados);
 
-                switch ( tipo ) {
-                  case 'usuarios':
-                    return this.transformarUsuarios( resp.resultados )
+            case 'aspectos':
+              return this.transformarAspectos(resp.resultados);
 
-                  case 'hospitales':
-                    return this.transformarHospitales( resp.resultados )
-
-                  case 'medicos':
-                     return this.transformarMedicos( resp.resultados )
-                
-                  default:
-                    return [];
-                }
-
-              })
-            );
-
+            default:
+              return [];
+          }
+        })
+      );
   }
-
-
 }

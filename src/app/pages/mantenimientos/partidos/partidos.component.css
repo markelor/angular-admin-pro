@@ -1,0 +1,27 @@
+.even.selected td {
+  background-color: paleturquoise; /* Add !important to make sure override datables base styles */
+}
+
+.odd.selected td {
+  background-color: paleturquoise; /* Add !important to make sure override datables base styles */
+}
+
+div.dataTables_wrapper {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.table-bordered th, .table-bordered td { border: 1px solid #ddd !important }
+.dt-buttons {
+  display: inline-block;
+  padding-top: 5px;
+  margin-bottom: 15px; }
+  .dt-buttons .dt-button {
+    padding: 5px 15px;
+    border-radius: 4px;
+    background: red;
+    color: red;
+    margin-right: 3px; }
+    .dt-buttons .dt-button:hover {
+      background:red; }

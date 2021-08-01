@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BusquedasService } from '../../services/busquedas.service';
 
-import { Hospital } from 'src/app/models/hospital.model';
-import { Medico } from '../../models/medico.model';
+import { Deporte } from 'src/app/models/deporte.model';
+import { Jugador } from '../../models/jugador.model';
 import { Usuario } from '../../models/usuario.model';
 
 @Component({
@@ -15,8 +15,8 @@ import { Usuario } from '../../models/usuario.model';
 export class BusquedaComponent implements OnInit {
 
   public usuarios: Usuario[] = [];
-  public medicos: Medico[] = [];
-  public hospitales: Hospital[] = [];
+  public jugadores: Jugador[] = [];
+  public deportes: Deporte[] = [];
 
 
   constructor( private activatedRoute: ActivatedRoute,
@@ -35,15 +35,15 @@ export class BusquedaComponent implements OnInit {
         .subscribe( (resp: any) => {
           console.log(resp)
           this.usuarios   = resp.usuarios;
-          this.medicos    = resp.medicos;
-          this.hospitales = resp.hospitales;
+          this.jugadores    = resp.jugadores;
+          this.deportes = resp.deportes;
         });
 
   }
 
 
-  abrirMedico( medico: Medico ) {
-    
+  abrirJugador( jugador: Jugador ) {
+
   }
 
 }

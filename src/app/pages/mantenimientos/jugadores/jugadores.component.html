@@ -1,0 +1,134 @@
+<div class="row animated fadeIn fast">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input type="text" class="form-control" placeholder="Buscar jugador..." #txtTermino
+          (keyup)="buscar( txtTermino.value )" />
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+  <div class="col-12">
+
+    <div class="alert alert-info text-center">
+      <h4 class="alert-heading">Cargando</h4>
+      <i class="fa fa-spin fa-refresh fa-2x"></i>
+      <p class="mb-0">Por favor espere</p>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row" *ngIf="!cargando">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-8">
+            <h4 class="card-title">Jugadores ({{ jugadoresRegistrados.length }})</h4>
+            <h6 class="card-subtitle">
+              Jugadores registrados en mi aplicación
+            </h6>
+          </div>
+
+          <div class="col">
+            <div class="text-right">
+              <a class="btn btn-primary" routerLink="/dashboard/jugador/nuevo">
+                <i class="fa fa-deporte-o"></i>
+                Crear jugador
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerJugadoresRegistrados"
+            class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th class="w100">FOTO</th>
+                <th>NOMBRE</th>
+                <th>FIABILIDAD</th>
+                <th>COMPROBADO</th>
+                <th class="w100 text-nowrap">ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let jugadorRegistrado of jugadoresRegistrados">
+                <tr>
+                  <td class="text-center">
+                    <img [src]="jugadorRegistrado.img | imagen:'jugadores'" [alt]="jugadorRegistrado.nombre"
+                      class="w100 cursor" (click)="abrirModal(jugadorRegistrado)">
+                  </td>
+                  <td>{{ jugadorRegistrado.nombre }}</td>
+                  <td>{{ jugadorRegistrado.fiabilidad }}</td>
+                  <td>{{ jugadorRegistrado.comprobado }}</td>
+                  <td class="text-nowrap text-center">
+                    <a [routerLink]="['/dashboard','jugador', jugadorRegistrado._id ]" data-toggle="tooltip"
+                      data-original-title="Editar">
+                      <i class="fa fa-pencil text-inverse m-r-10"></i>
+                    </a>
+
+                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"
+                      (click)="borrarJugadorRegistrado( jugadorRegistrado )">
+                      <i class="fa fa-close text-danger  m-r-10"></i>
+                    </a>
+                    <a class="cursor" data-toggle="tooltip" data-original-title="Carta natal"
+                      (click)="cargarCartaNatal(jugadorRegistrado)">
+                      <i class="fa fa-eye text-inverse"></i>
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!--
+                <button class="btn btn-secondary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguientes</button> -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Jugadores sin registarar-->
+
+<div class="row" *ngIf="!cargando">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Jugadores ({{ jugadoresRegistrados.length }})</h4>
+        <h6 class="card-subtitle">
+          Jugadores sin registrar
+        </h6>
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerJugadoresNoRegistrados"
+            class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>NOMBRE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let jugadorNoRegistrado of jugadoresNoRegistrados">
+                <tr>
+                  <td>{{ jugadorNoRegistrado }}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

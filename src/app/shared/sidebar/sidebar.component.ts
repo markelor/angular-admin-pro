@@ -7,19 +7,17 @@ import { Usuario } from '../../models/usuario.model';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class SidebarComponent implements OnInit {
-
   public usuario: Usuario;
 
-  constructor( public sidebarService: SidebarService,
-               private usuarioService: UsuarioService) {
+  constructor(
+    public sidebarService: SidebarService,
+    private usuarioService: UsuarioService
+  ) {
     this.usuario = usuarioService.usuario;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
