@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Relación planetaria</h4>
+        <h6 class="card-subtitle">Actualizar información</h6>
+
+        <form class="form-horizontal p-t-20" [formGroup]="relacionPlanetariaForm"
+          (submit)="guardarRelacionPlanetaria()">
+          <!--Nombre-->
+          <div class="form-group row">
+            <label for="nombre" class="col-sm-3 control-label">Nombre</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input type="text" formControlName="nombre" class="form-control" id="nombre">
+              </div>
+            </div>
+          </div>
+          <!--Descripcion-->
+          <div class="form-group row">
+            <label for="descripcion" class="col-sm-3 control-label">Descripcion</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <textarea formControlName="descripcion" class="form-control" rows="5" id="descripcion"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <ng-container formArrayName="configAspectos">
+            <ng-container *ngFor="let aspectoItem of getConfigAspectos(relacionPlanetariaForm); let i=index">
+              <div [formGroupName]="i">
+                <div class="form-group row">
+                  <!--Aspecto-->
+                  <label for="aspecto{{i}}" class="col-sm-3 control-label">Aspecto</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <select class="form-control" formControlName="aspecto">
+                        <option value="">Seleccione Aspecto</option>
+                        <option *ngFor="let aspecto of aspectos" [value]="aspecto">
+                          {{ aspecto }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <!--Grados-->
+                <ng-container formArrayName="grados">
+                  <ng-container *ngFor="let grado of getGrados(aspectoItem); let j=index">
+                    <div [formGroupName]="j">
+                      <!--Grado-->
+                      <div class="form-group row">
+                        <label for="grado{{i}}{{j}}" class="col-sm-3 control-label">Grado</label>
+                        <div class="col-sm-7">
+                          <div class="input-group">
+                            <input type="number" formControlName="grado" class="form-control" id="grado{{i}}{{j}}">
+                          </div>
+                        </div>
+                        <div class="col-sm-2">
+                          <button (click)="borrarGrado(i,j)" type="button"
+                          class="btn btn-warning waves-effect waves-light right">
+                          <i class="fa fa-trash"></i>
+                          Borrar
+                        </button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <div class="form-group row">
+                <div class="col-sm-12 ">
+                  <button (click)="anadirGrado(i)" type="button"
+                    class="btn btn-success waves-effect waves-light">
+                    <i class="fa fa-plus"></i>
+                    Añadir
+                  </button>
+                </div>
+              </div>
+                <!--Orbe-->
+                <div class="form-group row">
+                  <label for="orbe{{i}}" class="col-sm-3 control-label">Orbe</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="number" formControlName="orbe" class="form-control" id="orbe{{i}}">
+                    </div>
+                  </div>
+                </div>
+                <!--Puntos por grado-->
+                <div class="form-group row">
+                  <label for="puntosPorGrado{{i}}" class="col-sm-3 control-label">Puntos Por Grado</label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="number" formControlName="puntosPorGrado" class="form-control" id="puntosPorGrado{{i}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-12 ">
+                    <button (click)="borrarConfigAspecto(i)" type="button"
+                      class="btn btn-danger waves-effect waves-light right">
+                      <i class="fa fa-trash"></i>
+                      Borrar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <div class="form-group row">
+            <div class=" col-sm-9">
+              <button type="submit" [disabled]="relacionPlanetariaForm.invalid"
+                class="btn btn-success waves-effect waves-light">
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+            </div>
+            <div class="col-sm-3 ">
+              <button (click)="anadirConfigAspecto()" type="button"
+                class="btn btn-success waves-effect waves-light right">
+                <i class="fa fa-plus"></i>
+                Añadir
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

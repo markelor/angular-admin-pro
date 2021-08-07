@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { Deporte } from '../models/deporte.model';
 import { Jugador } from '../models/jugador.model';
-import { Aspecto } from '../models/aspecto.model';
+import { RelacionPlanetaria } from '../models/relacion-planetaria.model';
 
 const base_url = environment.base_url;
 
@@ -50,7 +50,7 @@ export class BusquedasService {
   private transformarJugadores(resultados: any[]): Jugador[] {
     return resultados;
   }
-  private transformarAspectos(resultados: any[]): Aspecto[] {
+  private transformarRelacionesPlanetarias(resultados: any[]): RelacionPlanetaria[] {
     return resultados;
   }
 
@@ -60,7 +60,7 @@ export class BusquedasService {
   }
 
   buscar(
-    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'aspectos',
+    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'relaciones-planetarias',
     termino: string
   ) {
     const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;
@@ -78,8 +78,8 @@ export class BusquedasService {
             case 'jugadores':
               return this.transformarJugadores(resp.resultados);
 
-            case 'aspectos':
-              return this.transformarAspectos(resp.resultados);
+            case 'relaciones-planetarias':
+              return this.transformarRelacionesPlanetarias(resp.resultados);
 
             default:
               return [];

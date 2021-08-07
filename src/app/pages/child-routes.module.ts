@@ -16,10 +16,11 @@ import { PartidosComponent } from './mantenimientos/partidos/partidos.component'
 import { PartidoComponent } from './mantenimientos/partidos/partido.component';
 import { JugadoresComponent } from './mantenimientos/jugadores/jugadores.component';
 import { JugadorComponent } from './mantenimientos/jugadores/jugador.component';
-import { AspectosComponent } from './mantenimientos/aspectos/aspectos.component';
-import { AspectoComponent } from './mantenimientos/aspectos/aspecto.component';
+
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { RelacionesPlanetariasComponent } from './mantenimientos/aspectos/relaciones-planetarias.component';
+import { RelacionPlanetariaComponent } from './mantenimientos/aspectos/relacion-planetaria.component';
 
 
 const childRoutes: Routes = [
@@ -38,8 +39,8 @@ const childRoutes: Routes = [
   { path: 'jugador/:id', component: JugadorComponent, data: { titulo: 'Mantenimiento de Jugador' }},
   { path: 'partidos', component: PartidosComponent, data: { titulo: 'Mantenimiento de Partidos' }},
   { path: 'partido/:id', component: PartidoComponent, data: { titulo: 'Mantenimiento de Partido' }},
-  { path: 'aspectos', component: AspectosComponent, data: { titulo: 'Mantenimiento de Aspectos' }},
-  { path: 'aspecto/:id', component: AspectoComponent, data: { titulo: 'Mantenimiento de Aspecto' }},
+  { path: 'relaciones-planetarias', component: RelacionesPlanetariasComponent, data: { titulo: 'Mantenimiento de relaciones planetarias' }},
+  { path: 'relacion-planetaria/:id', component: RelacionPlanetariaComponent, data: { titulo: 'Mantenimiento de relacion planetaria' }},
 
   // Rutas de Admin
   { path: 'usuarios', canActivate: [ AdminGuard ], component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' }},

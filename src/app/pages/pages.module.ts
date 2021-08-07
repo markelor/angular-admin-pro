@@ -22,11 +22,11 @@ import { DeportesComponent } from './mantenimientos/deportes/deportes.component'
 import { JugadoresComponent } from './mantenimientos/jugadores/jugadores.component';
 import { JugadorComponent } from './mantenimientos/jugadores/jugador.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-import { AspectoComponent } from './mantenimientos/aspectos/aspecto.component';
-import { AspectosComponent } from './mantenimientos/aspectos/aspectos.component';
 import { PartidosComponent } from './mantenimientos/partidos/partidos.component';
 import { PartidoComponent } from './mantenimientos/partidos/partido.component';
 import { DataTablesModule } from 'angular-datatables';
+import { RelacionesPlanetariasComponent } from './mantenimientos/aspectos/relaciones-planetarias.component';
+import { RelacionPlanetariaComponent } from './mantenimientos/aspectos/relacion-planetaria.component';
 
 
 
@@ -46,8 +46,8 @@ import { DataTablesModule } from 'angular-datatables';
     JugadorComponent,
     PartidosComponent,
     PartidoComponent,
-    AspectosComponent,
-    AspectoComponent,
+    RelacionesPlanetariasComponent,
+    RelacionPlanetariaComponent,
     BusquedaComponent,
   ],
   exports: [
