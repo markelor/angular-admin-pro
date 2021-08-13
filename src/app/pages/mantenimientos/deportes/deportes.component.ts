@@ -3,10 +3,10 @@ import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
-import { Deporte } from '../../../models/deporte.model';
+import { Deporte } from '../../../models/mantenimientos/deporte.model';
 
 import { BusquedasService } from '../../../services/busquedas.service';
-import { DeporteService } from '../../../services/deporte.service';
+import { DeporteService } from '../../../services/mantenimientos/deporte.service';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 
 @Component({

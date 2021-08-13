@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
-import { Partido } from '../models/partido.model';
+import { Partido } from '../../models/mantenimientos/partido.model';
 
 const base_url = environment.base_url;
 

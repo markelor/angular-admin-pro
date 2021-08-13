@@ -1,4 +1,4 @@
-import { Usuario } from '../models/usuario.model';
+import { Usuario } from '../models/mantenimientos/usuario.model';
 
 export interface CargarUsuario {
     total: number;

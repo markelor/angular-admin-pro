@@ -10,10 +10,10 @@ import { Subject, Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
-import { Jugador } from '../../../models/jugador.model';
+import { Jugador } from '../../../models/mantenimientos/jugador.model';
 
 import { BusquedasService } from '../../../services/busquedas.service';
-import { JugadorService } from '../../../services/jugador.service';
+import { JugadorService } from '../../../services/mantenimientos/jugador.service';
 import { AstrologiaService } from '../../../services/astrologia.service';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 

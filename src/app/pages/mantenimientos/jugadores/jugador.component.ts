@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
-import { Deporte } from '../../../models/deporte.model';
-import { Jugador } from '../../../models/jugador.model';
+import { Deporte } from '../../../models/mantenimientos/deporte.model';
+import { Jugador } from '../../../models/mantenimientos/jugador.model';
 
-import { DeporteService } from '../../../services/deporte.service';
-import { JugadorService } from '../../../services/jugador.service';
+import { DeporteService } from '../../../services/mantenimientos/deporte.service';
+import { JugadorService } from '../../../services/mantenimientos/jugador.service';
 import { delay } from 'rxjs/operators';
 
 @Component({

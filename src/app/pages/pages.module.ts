@@ -25,9 +25,12 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { PartidosComponent } from './mantenimientos/partidos/partidos.component';
 import { PartidoComponent } from './mantenimientos/partidos/partido.component';
 import { DataTablesModule } from 'angular-datatables';
-import { RelacionesPlanetariasComponent } from './mantenimientos/aspectos/relaciones-planetarias.component';
-import { RelacionPlanetariaComponent } from './mantenimientos/aspectos/relacion-planetaria.component';
-
+import { RelacionesPlanetariasComponent } from './configuraciones/relaciones-planetarias/relaciones-planetarias.component';
+import { RelacionPlanetariaComponent } from './configuraciones/relaciones-planetarias/relacion-planetaria.component';
+import { CompatibilidadesPlanetariasComponent } from './configuraciones/compatibilidades-planetarias/compatibilidades-planetarias.component';
+import { CompatibilidadPlanetariaComponent } from './configuraciones/compatibilidades-planetarias/compatibilidad-planetaria.component';
+import { CuerposCelestesComponent } from './mantenimientos/cuerpos-celestes/cuerpos-celestes.component';
+import { CuerpoCelesteComponent } from './mantenimientos/cuerpos-celestes/cuerpo-celeste.component';
 
 
 @NgModule({
@@ -48,7 +51,12 @@ import { RelacionPlanetariaComponent } from './mantenimientos/aspectos/relacion-
     PartidoComponent,
     RelacionesPlanetariasComponent,
     RelacionPlanetariaComponent,
-    BusquedaComponent,
+    CompatibilidadesPlanetariasComponent,
+    CompatibilidadPlanetariaComponent,
+    CuerposCelestesComponent,
+    CuerpoCelesteComponent,
+    BusquedaComponent
+
   ],
   exports: [
     DashboardComponent,

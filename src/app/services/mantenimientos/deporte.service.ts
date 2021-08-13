@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
-import { Deporte } from '../models/deporte.model';
+import { environment } from '../../../environments/environment';
+import { Deporte } from '../../models/mantenimientos/deporte.model';
 
 const base_url = environment.base_url;
 

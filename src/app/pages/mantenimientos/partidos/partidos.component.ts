@@ -3,13 +3,13 @@ import { Subject, Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
-import { Partido } from '../../../models/partido.model';
+import { Partido } from '../../../models/mantenimientos/partido.model';
 
 import { BusquedasService } from '../../../services/busquedas.service';
-import { PartidoService } from '../../../services/partido.service';
+import { PartidoService } from '../../../services/mantenimientos/partido.service';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
-import { DeporteService } from 'src/app/services/deporte.service';
-import { Deporte } from 'src/app/models/deporte.model';
+import { DeporteService } from 'src/app/services/mantenimientos/deporte.service';
+import { Deporte } from 'src/app/models/mantenimientos/deporte.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

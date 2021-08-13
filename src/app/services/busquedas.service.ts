@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 
-import { Usuario } from '../models/usuario.model';
-import { Deporte } from '../models/deporte.model';
-import { Jugador } from '../models/jugador.model';
-import { RelacionPlanetaria } from '../models/relacion-planetaria.model';
+import { Usuario } from '../models/mantenimientos/usuario.model';
+import { Deporte } from '../models/mantenimientos/deporte.model';
+import { Jugador } from '../models/mantenimientos/jugador.model';
+import { RelacionPlanetaria } from '../models/configuraciones/relacion-planetaria.model';
 
 const base_url = environment.base_url;
 
@@ -60,7 +60,7 @@ export class BusquedasService {
   }
 
   buscar(
-    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'relaciones-planetarias',
+    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'relaciones-planetarias' |'compatibilidades-planetarias'|'cuerpos-celestes',
     termino: string
   ) {
     const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;

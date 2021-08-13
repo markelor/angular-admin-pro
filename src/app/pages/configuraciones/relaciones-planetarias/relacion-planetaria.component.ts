@@ -8,13 +8,13 @@ import {
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { RelacionPlanetariaService } from '../../../services/relacion-planetaria.service';
+import { RelacionPlanetariaService } from '../../../services/configuraciones/relacion-planetaria.service';
 import { delay } from 'rxjs/operators';
 import {
   RelacionPlanetaria,
   _Grado,
-} from 'src/app/models/relacion-planetaria.model';
-import { _ConfigAspecto } from 'src/app/models/relacion-planetaria.model';
+} from 'src/app/models/configuraciones/relacion-planetaria.model';
+import { _ConfigAspecto } from 'src/app/models/configuraciones/relacion-planetaria.model';
 @Component({
   selector: 'app-relacion-planetaria',
   templateUrl: './relacion-planetaria.component.html',
@@ -150,7 +150,7 @@ export class RelacionPlanetariaComponent implements OnInit {
         this.relacionPlanetariaForm.patchValue({
           nombre,
           descripcion,
-          configAspectos,
+          configAspectos
         });
       });
   }

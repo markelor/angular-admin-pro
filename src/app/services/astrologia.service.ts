@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
-import { Jugador } from '../models/jugador.model';
+import { Jugador } from '../models/mantenimientos/jugador.model';
 import { _HistoricoJugador } from '../models/historico-jugador.model';
 import { Observable } from 'rxjs';
 

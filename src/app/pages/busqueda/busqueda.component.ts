@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BusquedasService } from '../../services/busquedas.service';
 
-import { Deporte } from 'src/app/models/deporte.model';
-import { Jugador } from '../../models/jugador.model';
-import { Usuario } from '../../models/usuario.model';
+import { Deporte } from 'src/app/models/mantenimientos/deporte.model';
+import { Jugador } from '../../models/mantenimientos/jugador.model';
+import { Usuario } from '../../models/mantenimientos/usuario.model';
 
 @Component({
   selector: 'app-busqueda',

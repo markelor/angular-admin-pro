@@ -1,4 +1,4 @@
-import { Partido } from './partido.model';
+import { Partido } from './mantenimientos/partido.model';
 import { _PlanetasPuntos } from './planetas-puntos.model';
 import { _AspectoPuntos } from './aspecto-puntos.model';
 export interface _HistoricoJugador {

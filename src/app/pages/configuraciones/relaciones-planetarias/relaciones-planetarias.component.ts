@@ -3,14 +3,14 @@ import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
-import { RelacionPlanetaria } from '../../../models/relacion-planetaria.model';
+import { RelacionPlanetaria } from '../../../models/configuraciones/relacion-planetaria.model';
 
 import { BusquedasService } from '../../../services/busquedas.service';
-import { RelacionPlanetariaService } from '../../../services/relacion-planetaria.service';
+import { RelacionPlanetariaService } from '../../../services/configuraciones/relacion-planetaria.service';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 
 @Component({
-  selector: 'app-relacionesPlanetarias',
+  selector: 'app-relaciones-planetarias',
   templateUrl: './relaciones-planetarias.component.html',
   styleUrls: ['./relaciones-planetarias.component.css'],
 })
