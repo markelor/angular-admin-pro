@@ -5,9 +5,9 @@ import Swal from 'sweetalert2';
 
 import { RelacionPlanetaria } from '../../../models/configuraciones/relacion-planetaria.model';
 
-import { BusquedasService } from '../../../services/busquedas.service';
+import { BusquedasService } from '../../../services/dashboard/busquedas.service';
 import { RelacionPlanetariaService } from '../../../services/configuraciones/relacion-planetaria.service';
-import { ModalImagenService } from '../../../services/modal-imagen.service';
+import { ModalImagenService } from '../../../services/dashboard/modal-imagen.service';
 
 @Component({
   selector: 'app-relaciones-planetarias',

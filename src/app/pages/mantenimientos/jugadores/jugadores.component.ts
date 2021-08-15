@@ -12,10 +12,10 @@ import Swal from 'sweetalert2';
 
 import { Jugador } from '../../../models/mantenimientos/jugador.model';
 
-import { BusquedasService } from '../../../services/busquedas.service';
+import { BusquedasService } from '../../../services/dashboard/busquedas.service';
 import { JugadorService } from '../../../services/mantenimientos/jugador.service';
 import { AstrologiaService } from '../../../services/astrologia.service';
-import { ModalImagenService } from '../../../services/modal-imagen.service';
+import { ModalImagenService } from '../../../services/dashboard/modal-imagen.service';
 
 @Component({
   selector: 'app-jugadores',
@@ -78,18 +78,6 @@ export class JugadoresComponent implements OnInit, OnDestroy {
     this.astrologiaService.cargarCartaNatal(jugador).subscribe(()=>{
 
     });
-  }
-
-  buscar(termino: string) {
-    if (termino.length === 0) {
-      return this.cargarJugadoresRegistrados();
-    }
-
-    this.busquedasService
-      .buscar('jugadores', termino)
-      .subscribe((resp: Jugador[]) => {
-        this.jugadoresRegistrados = resp;
-      });
   }
 
   abrirModal(jugador: Jugador) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../../services/settings.service';
+import { SettingsService } from '../../../services/dashboard/settings.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -16,11 +16,11 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   changeTheme( theme: string ) {
-        
+
     this.settingsService.changeTheme( theme );
-    
+
   }
 
-  
+
 
 }

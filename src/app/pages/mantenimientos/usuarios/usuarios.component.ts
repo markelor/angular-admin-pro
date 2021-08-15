@@ -4,8 +4,8 @@ import { delay } from 'rxjs/operators';
 
 import { Usuario } from '../../../models/mantenimientos/usuario.model';
 
-import { BusquedasService } from '../../../services/busquedas.service';
-import { ModalImagenService } from '../../../services/modal-imagen.service';
+import { BusquedasService } from '../../../services/dashboard/busquedas.service';
+import { ModalImagenService } from '../../../services/dashboard/modal-imagen.service';
 import { UsuarioService } from '../../../services/mantenimientos/usuario.service';
 import { Subscription } from 'rxjs';
 

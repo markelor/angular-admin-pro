@@ -14,6 +14,8 @@ import {
   CompatibilidadPlanetaria
 } from 'src/app/models/configuraciones/compatibilidad-planetaria.model';
 import { _ConfigArmonia } from 'src/app/models/configuraciones/compatibilidad-planetaria.model';
+import { CuerpoCelesteService } from 'src/app/services/mantenimientos/cuerpo-celeste.service';
+import { CuerpoCeleste } from 'src/app/models/mantenimientos/cuerpo-celeste.model';
 @Component({
   selector: 'app-compatibilidad-planetaria',
   templateUrl: './compatibilidad-planetaria.component.html',
@@ -24,16 +26,11 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private compatibilidadPlanetariaService: CompatibilidadPlanetariaService,
+    private cuerpoCelesteService: CuerpoCelesteService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
-  cuerposCelestes: string[] = [
-    'Conjuncion',
-    'Sextil',
-    'Cuadratura',
-    'Oposicion',
-    'Trigono',
-  ];
+  cuerposCelestes: CuerpoCeleste[] =[];
 
   ngOnInit(): void {
     this.compatibilidadPlanetariaForm = this.fb.group({
@@ -41,9 +38,21 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
       descripcion: new FormControl('', Validators.required),
       configArmonias: new FormArray([this.crearConfigArmoniaGrupo()]),
     });
+    this.cargarCuerposCelestes();
     this.activatedRoute.params.subscribe(({ id }) =>
       this.cargarCompatibilidadPlanetaria(id)
     );
+  }
+  /**
+   * cargar cuerpos celestes
+   */
+   private cargarCuerposCelestes() {
+    this.cuerpoCelesteService
+    .cargarCuerposCelestes()
+    .pipe(delay(100))
+    .subscribe((cuerposCelestes) => {
+    this.cuerposCelestes=cuerposCelestes;
+    });
   }
 
   /**
@@ -86,7 +95,9 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
     );
     control.removeAt(index);
   }
-
+/**
+ * Cargar compatibilidad planetaria
+ */
   cargarCompatibilidadPlanetaria(id: string) {
     if (id === 'nuevo') {
       return;
@@ -97,7 +108,7 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
       .pipe(delay(100))
       .subscribe((compatibilidadPlanetaria) => {
         if (!compatibilidadPlanetaria) {
-          return this.router.navigateByUrl(`/dashboard/compatibilidad-planetaria`);
+          return this.router.navigateByUrl(`/configuracion/compatibilidad-planetaria`);
         }
 
         const { nombre, descripcion, configArmonias } = compatibilidadPlanetaria;
@@ -109,6 +120,9 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
         });
       });
   }
+  /**
+   * Guardar compatibilidad planetaria
+   */
 
   guardarCompatibilidadPlanetaria() {
     console.log(this.compatibilidadPlanetariaForm.value);
@@ -137,7 +151,7 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
           this.router.navigateByUrl(
-            `/dashboard/compatibilidad-planetaria/${resp.compatibilidadPlanetaria._id}`
+            `/configuracion/compatibilidad-planetaria/${resp.compatibilidadPlanetaria._id}`
           );
         });
     }

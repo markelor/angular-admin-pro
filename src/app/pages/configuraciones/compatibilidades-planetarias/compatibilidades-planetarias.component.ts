@@ -5,9 +5,9 @@ import Swal from 'sweetalert2';
 
 import { CompatibilidadPlanetaria } from '../../../models/configuraciones/compatibilidad-planetaria.model';
 
-import { BusquedasService } from '../../../services/busquedas.service';
+import { BusquedasService } from '../../../services/dashboard/busquedas.service';
 import { CompatibilidadPlanetariaService } from '../../../services/configuraciones/compatibilidad-planetaria.service';
-import { ModalImagenService } from '../../../services/modal-imagen.service';
+import { ModalImagenService } from '../../../services/dashboard/modal-imagen.service';
 
 @Component({
   selector: 'app-compatibilidades-planetarias',

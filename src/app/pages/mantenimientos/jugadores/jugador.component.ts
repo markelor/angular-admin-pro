@@ -72,7 +72,7 @@ export class JugadorComponent implements OnInit {
       .pipe(delay(100))
       .subscribe((jugador) => {
         if (!jugador) {
-          return this.router.navigateByUrl(`/dashboard/jugadores`);
+          return this.router.navigateByUrl(`/mantenimiento/jugadores`);
         }
 
         const {
@@ -134,7 +134,7 @@ export class JugadorComponent implements OnInit {
         .crearJugador(this.jugadorForm.value)
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
-          this.router.navigateByUrl(`/dashboard/jugador/${resp.jugador._id}`);
+          this.router.navigateByUrl(`/mantenimiento/jugador/${resp.jugador._id}`);
         });
     }
   }

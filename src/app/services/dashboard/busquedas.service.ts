@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
-import { Usuario } from '../models/mantenimientos/usuario.model';
-import { Deporte } from '../models/mantenimientos/deporte.model';
-import { Jugador } from '../models/mantenimientos/jugador.model';
-import { RelacionPlanetaria } from '../models/configuraciones/relacion-planetaria.model';
+import { Usuario } from '../../models/mantenimientos/usuario.model';
+import { Deporte } from '../../models/mantenimientos/deporte.model';
+import { Jugador } from '../../models/mantenimientos/jugador.model';
+import { RelacionPlanetaria } from '../../models/configuraciones/relacion-planetaria.model';
 
 const base_url = environment.base_url;
 

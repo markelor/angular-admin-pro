@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
 
-        <h4 class="card-title">Relación planetaria</h4>
+        <h4 class="card-title">Compatibilidad planetaria</h4>
         <h6 class="card-subtitle">Actualizar información</h6>
 
         <form class="form-horizontal p-t-20" [formGroup]="compatibilidadPlanetariaForm"
@@ -37,7 +37,7 @@
                       <select class="form-control" formControlName="cuerpoCeleste1">
                         <option value="">Seleccione cuerpo celeste</option>
                         <option *ngFor="let cuerpoCeleste of cuerposCelestes" [value]="cuerpoCeleste">
-                          {{ cuerpoCeleste }}
+                          {{ cuerpoCeleste.nombre }}
                         </option>
                       </select>
                     </div>
@@ -51,7 +51,7 @@
                       <select class="form-control" formControlName="cuerpoCeleste2">
                         <option value="">Seleccione cuerpo celeste</option>
                         <option *ngFor="let cuerpoCeleste of cuerposCelestes" [value]="cuerpoCeleste">
-                          {{ cuerpoCeleste }}
+                          {{ cuerpoCeleste.nombre }}
                         </option>
                       </select>
                     </div>

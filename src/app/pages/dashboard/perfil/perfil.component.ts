@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
-import { UsuarioService } from '../../services/mantenimientos/usuario.service';
-import { FileUploadService } from '../../services/file-upload.service';
+import { UsuarioService } from '../../../services/mantenimientos/usuario.service';
+import { FileUploadService } from '../../../services/dashboard/file-upload.service';
 
-import { Usuario } from '../../models/mantenimientos/usuario.model';
+import { Usuario } from '../../../models/mantenimientos/usuario.model';
 
 @Component({
   selector: 'app-perfil',

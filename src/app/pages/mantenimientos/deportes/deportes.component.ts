@@ -5,9 +5,9 @@ import Swal from 'sweetalert2';
 
 import { Deporte } from '../../../models/mantenimientos/deporte.model';
 
-import { BusquedasService } from '../../../services/busquedas.service';
+import { BusquedasService } from '../../../services/dashboard/busquedas.service';
 import { DeporteService } from '../../../services/mantenimientos/deporte.service';
-import { ModalImagenService } from '../../../services/modal-imagen.service';
+import { ModalImagenService } from '../../../services/dashboard/modal-imagen.service';;
 
 @Component({
   selector: 'app-deportes',

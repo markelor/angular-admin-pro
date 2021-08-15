@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../../services/sidebar.service';
+import { SidebarService } from '../../services/dashboard/sidebar.service';
 import { UsuarioService } from '../../services/mantenimientos/usuario.service';
 
 import { Usuario } from '../../models/mantenimientos/usuario.model';
@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
     public sidebarService: SidebarService,
     private usuarioService: UsuarioService
   ) {
+    console.log(sidebarService.menu);
     this.usuario = usuarioService.usuario;
   }
 
