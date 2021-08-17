@@ -31,6 +31,13 @@ const routes: Routes = [
     canLoad: [ AuthGuard ],
     loadChildren: () => import('./configuraciones/configuraciones-child-routes.module').then( m => m.ConfiguracionesChildRoutesModule )
 },
+{
+  path: 'estrategia',
+  component: PagesComponent,
+  canActivate: [ AuthGuard ],
+  canLoad: [ AuthGuard ],
+  loadChildren: () => import('./estrategias/estrategias-child-routes.module').then( m => m.EstrategiasChildRoutesModule )
+},
 ];
 
 @NgModule({

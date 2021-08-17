@@ -6,6 +6,8 @@ import { RelacionPlanetariaComponent } from './relaciones-planetarias/relacion-p
 
 import { CompatibilidadesPlanetariasComponent } from './compatibilidades-planetarias/compatibilidades-planetarias.component';
 import { CompatibilidadPlanetariaComponent } from './compatibilidades-planetarias/compatibilidad-planetaria.component';
+import { CuerposFirmamentoComponent } from './cuerpos-firmamento/cuerpos-firmamento.component';
+import { CuerpoFirmamentoComponent } from './cuerpos-firmamento/cuerpo-firmamento.component';
 
 const childRoutes: Routes = [
   { path: '', component: RelacionesPlanetariasComponent,/* data: { titulo: 'Dashboard' }*/ },
@@ -29,6 +31,16 @@ const childRoutes: Routes = [
     path: 'compatibilidad-planetaria/:id',
     component: CompatibilidadPlanetariaComponent,
     data: { titulo: 'Configuracion de compatibilidad planetaria' },
+  },
+  {
+    path: 'cuerpos-firmamento',
+    component: CuerposFirmamentoComponent,
+    data: { titulo: 'Configuracion de cuerpos firmamento' },
+  },
+  {
+    path: 'cuerpo-firmamento/:id',
+    component: CuerpoFirmamentoComponent,
+    data: { titulo: 'Configuracion de cuerpo firmamento' },
   },
 
 ];

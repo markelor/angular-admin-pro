@@ -60,7 +60,7 @@ export class BusquedasService {
   }
 
   buscar(
-    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'relaciones-planetarias' |'compatibilidades-planetarias'|'cuerpos-celestes',
+    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'relaciones-planetarias' |'compatibilidades-planetarias'|'cuerpos-celestes'|'cuerpos-firmamento',
     termino: string
   ) {
     const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;
