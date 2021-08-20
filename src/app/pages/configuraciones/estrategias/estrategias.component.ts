@@ -2,13 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
-
-import { CompatibilidadPlanetaria } from '../../../models/configuraciones/compatibilidad-planetaria.model';
-
+import { Estrategia } from '../../../models/configuraciones/estrategia.model';
 import { BusquedasService } from '../../../services/dashboard/busquedas.service';
-import { CompatibilidadPlanetariaService } from '../../../services/configuraciones/compatibilidad-planetaria.service';
 import { ModalImagenService } from '../../../services/dashboard/modal-imagen.service';
-
+import { EstrategiaService } from '../../../services/configuraciones/estrategia.service';
 @Component({
   selector: 'app-estrategias',
   templateUrl: './estrategias.component.html',
@@ -16,11 +13,11 @@ import { ModalImagenService } from '../../../services/dashboard/modal-imagen.ser
 })
 export class EstrategiasComponent implements OnInit, OnDestroy {
   public cargando: boolean = true;
-  public compatibilidadesPlanetarias: CompatibilidadPlanetaria[] = [];
+  public estrategias: Estrategia[] = [];
   private imgSubs: Subscription;
 
   constructor(
-    private compatibilidadPlanetariaService: CompatibilidadPlanetariaService,
+    private estrategiaService: EstrategiaService,
     private modalImagenService: ModalImagenService,
     private busquedasService: BusquedasService
   ) {}
@@ -30,56 +27,56 @@ export class EstrategiasComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-   /* this.cargarCompatibilidadesPlanetarias();
+    this.cargarEstrategias();
 
     this.imgSubs = this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(delay(100))
-      .subscribe((img) => this.cargarCompatibilidadesPlanetarias());*/
+      .subscribe((img) => this.cargarEstrategias());
   }
 
- /* cargarCompatibilidadesPlanetarias() {
+  cargarEstrategias() {
     this.cargando = true;
-    this.compatibilidadPlanetariaService
-      .cargarCompatibilidadesPlanetarias()
-      .subscribe((compatibilidadesPlanetarias) => {
+    this.estrategiaService
+      .cargarEstrategias()
+      .subscribe((estrategias) => {
         this.cargando = false;
-        this.compatibilidadesPlanetarias = compatibilidadesPlanetarias;
+        this.estrategias = estrategias;
       });
-  }*/
+  }
 
   buscar(termino: string) {
-    /*if (termino.length === 0) {
-      return this.cargarCompatibilidadesPlanetarias();
+    if (termino.length === 0) {
+      return this.cargarEstrategias();
     }
-*/
+
     this.busquedasService
       .buscar('compatibilidades-planetarias', termino)
-      .subscribe((resp: CompatibilidadPlanetaria[]) => {
-        this.compatibilidadesPlanetarias = resp;
+      .subscribe((resp: Estrategia[]) => {
+        this.estrategias = resp;
       });
   }
 
 
-  /*borrarCompatibilidadPlanetaria(compatibilidadPlanetaria: CompatibilidadPlanetaria) {
+  borrarEstrategia(estrategia: Estrategia) {
     Swal.fire({
       title: '¿Borrar compatibilidad planetaria?',
-      text: `Esta a punto de borrar a ${compatibilidadPlanetaria.nombre}`,
+      text: `Esta a punto de borrar a ${estrategia.nombre}`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Si, borrarlo',
     }).then((result) => {
       if (result.value) {
-        this.compatibilidadPlanetariaService
-          .borrarCompatibilidadPlanetaria(compatibilidadPlanetaria._id)
+        this.estrategiaService
+          .borrarEstrategia(estrategia._id)
           .subscribe((resp) => {
-            this.cargarCompatibilidadesPlanetarias();
+            this.cargarEstrategias();
             Swal.fire(
               'Compatibilidad planetaria borrada',
-              `${compatibilidadPlanetaria.nombre} fue eliminado correctamente`,
+              `${estrategia.nombre} fue eliminado correctamente`,
               'success'
             );
           });
       }
     });
-  }*/
+  }
 }

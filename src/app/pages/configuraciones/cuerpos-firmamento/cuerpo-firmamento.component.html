@@ -34,7 +34,7 @@
                   <label for="cuerpoCeleste1{{i}}" class="col-sm-3 control-label">Cuerpo celeste </label>
                   <div class="col-sm-9">
                     <div class="input-group">
-                      <select class="form-control" formControlName="cuerpoCelesteId">
+                      <select class="form-control" formControlName="cuerpoCeleste">
                         <option value="">Seleccione cuerpo celeste </option>
                         <option *ngFor="let cuerpoCeleste of cuerposCelestes" [value]="cuerpoCeleste._id">
                           {{ cuerpoCeleste.nombre }}

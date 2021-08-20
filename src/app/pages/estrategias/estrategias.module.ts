@@ -5,13 +5,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PipesModule } from '../../pipes/pipes.module';
 import { DataTablesModule } from 'angular-datatables';
-import { EstrategiasComponent } from './estrategias/estrategias.component';
-
+import { EstrategiasComponent } from '../configuraciones/estrategias/estrategias.component';
+import { EstrategiaComponent } from '../configuraciones/estrategias/estrategia.component';
 
 
 @NgModule({
   declarations: [
     EstrategiasComponent,
+    EstrategiaComponent
 
   ],
   exports: [

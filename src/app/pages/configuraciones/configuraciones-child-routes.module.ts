@@ -8,6 +8,8 @@ import { CompatibilidadesPlanetariasComponent } from './compatibilidades-planeta
 import { CompatibilidadPlanetariaComponent } from './compatibilidades-planetarias/compatibilidad-planetaria.component';
 import { CuerposFirmamentoComponent } from './cuerpos-firmamento/cuerpos-firmamento.component';
 import { CuerpoFirmamentoComponent } from './cuerpos-firmamento/cuerpo-firmamento.component';
+import { EstrategiasComponent } from './estrategias/estrategias.component';
+import { EstrategiaComponent } from './estrategias/estrategia.component';
 
 const childRoutes: Routes = [
   { path: '', component: RelacionesPlanetariasComponent,/* data: { titulo: 'Dashboard' }*/ },
@@ -42,6 +44,16 @@ const childRoutes: Routes = [
     component: CuerpoFirmamentoComponent,
     data: { titulo: 'Configuracion de cuerpo firmamento' },
   },
+  {
+    path: 'estrategias',
+    component: EstrategiasComponent,
+    data: { titulo: 'Estrategias' },
+  },
+  {
+    path: 'estrategia/:id',
+    component:EstrategiaComponent,
+    data: { titulo: 'Estrategia' },
+  }
 
 ];
 

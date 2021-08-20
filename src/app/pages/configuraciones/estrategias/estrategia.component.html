@@ -1,0 +1,144 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Compatibilidad planetaria</h4>
+        <h6 class="card-subtitle">Actualizar información</h6>
+
+        <form
+          class="form-horizontal p-t-20"
+          [formGroup]="estrategiaForm"
+          (submit)="guardarEstrategia()"
+        >
+          <!--Nombre-->
+          <div class="form-group row">
+            <label for="nombre" class="col-sm-3 control-label">Nombre</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input
+                  type="text"
+                  formControlName="nombre"
+                  class="form-control"
+                  id="nombre"
+                />
+              </div>
+            </div>
+          </div>
+          <!--Descripcion-->
+          <div class="form-group row">
+            <label for="descripcion" class="col-sm-3 control-label"
+              >Descripcion</label
+            >
+            <div class="col-sm-9">
+              <div class="input-group">
+                <textarea
+                  formControlName="descripcion"
+                  class="form-control"
+                  rows="5"
+                  id="descripcion"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!--Cuerpos firmamento natal-->
+          <div class="form-group row">
+            <label for="cuerpoFirmamentoNatal" class="col-sm-3 control-label"
+              >Cuerpo firmamento natal</label
+            >
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="form-control" formControlName="cuerposFirmamentoNatal">
+                  <option value="">Seleccione cuerpo firmamento natal</option>
+                  <option
+                    *ngFor="let cuerpoFirmamento of cuerposFirmamento"
+                    [value]="cuerpoFirmamento._id"
+                  >
+                    {{ cuerpoFirmamento.nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+           <!--Cuerpos firmamento transitos-->
+           <div class="form-group row">
+            <label for="cuerposFirmamentoTransitos" class="col-sm-3 control-label"
+              >Cuerpo firmamento transito</label
+            >
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select class="form-control" formControlName="cuerposFirmamentoTransitos">
+                  <option value="">Seleccione cuerpo firmamento transito</option>
+                  <option
+                    *ngFor="let cuerpoFirmamento of cuerposFirmamento"
+                    [value]="cuerpoFirmamento._id"
+                  >
+                    {{ cuerpoFirmamento.nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!--Compatibilidades planetarias-->
+          <div class="form-group row">
+            <label for="compatibilidadPlanetaria" class="col-sm-3 control-label"
+              >Compatibilidad planetaria</label
+            >
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select
+                  class="form-control"
+                  formControlName="compatibilidadPlanetaria"
+                >
+                  <option value="">Seleccione compatibilidad planetaria</option>
+                  <option
+                    *ngFor="
+                      let compatibilidadPlanetaria of compatibilidadesPlanetarias
+                    "
+                    [value]="compatibilidadPlanetaria._id"
+                  >
+                    {{ compatibilidadPlanetaria.nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!--Relaciones planetarias-->
+          <div class="form-group row">
+            <label for="relacionPlanetaria" class="col-sm-3 control-label"
+              >Relacion planetaria</label
+            >
+            <div class="col-sm-9">
+              <div class="input-group">
+                <select
+                  class="form-control"
+                  formControlName="relacionPlanetaria"
+                >
+                  <option value="">Seleccione relacion planetaria</option>
+                  <option
+                    *ngFor="let relacionPlanetaria of relacionesPlanetarias"
+                    [value]="relacionPlanetaria._id"
+                  >
+                    {{ relacionPlanetaria.nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <button
+                type="submit"
+                [disabled]="estrategiaForm.invalid"
+                class="btn btn-success waves-effect waves-light"
+              >
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

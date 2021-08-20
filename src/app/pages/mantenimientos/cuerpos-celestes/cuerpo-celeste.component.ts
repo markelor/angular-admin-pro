@@ -46,7 +46,7 @@ export class CuerpoCelesteComponent implements OnInit {
       .pipe(delay(100))
       .subscribe((cuerpoCeleste) => {
         if (!cuerpoCeleste) {
-          return this.router.navigateByUrl(`/mantenimiento/cuerpo-celeste`);
+          return this.router.navigateByUrl(`/mantenimientos/cuerpo-celeste`);
         }
 
         const {nombre,abreviatura } = cuerpoCeleste;
@@ -85,7 +85,7 @@ export class CuerpoCelesteComponent implements OnInit {
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
           this.router.navigateByUrl(
-            `/mantenimiento/cuerpo-celeste/${resp.cuerpoCeleste._id}`
+            `/mantenimientos/cuerpo-celeste/${resp.cuerpoCeleste._id}`
           );
         });
     }

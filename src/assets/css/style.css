@@ -952,7 +952,7 @@ When click on sidebar toggler and also for tablet
     .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a .label {
       display: none; } }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .mini-sidebar .left-sidebar {
     position: fixed; }
   .mini-sidebar .left-sidebar,
@@ -5620,7 +5620,7 @@ File: scss
   .hidden-sm-up {
     display: none !important; } }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .hidden-sm-down {
     display: none !important; } }
 
@@ -5757,7 +5757,7 @@ File: scss
 /*-- ==============================================================
  Phone and below ipad(767px)
  ============================================================== */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .container-fluid {
     padding: 25px 15px 25px 15px; }
   /*Header*/

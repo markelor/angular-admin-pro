@@ -182,7 +182,7 @@ export class RelacionPlanetariaComponent implements OnInit {
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
           this.router.navigateByUrl(
-            `/configuracion/relacion-planetaria/${resp.relacionPlanetaria._id}`
+            `/configuraciones/relacion-planetaria/${resp.relacionPlanetaria._id}`
           );
         });
     }

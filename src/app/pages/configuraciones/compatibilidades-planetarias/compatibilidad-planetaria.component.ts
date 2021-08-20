@@ -106,7 +106,7 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
       .subscribe((compatibilidadPlanetaria) => {
         if (!compatibilidadPlanetaria) {
           return this.router.navigateByUrl(
-            `/configuracion/compatibilidad-planetaria`
+            `/configuraciones/compatibilidad-planetaria`
           );
         }
 
@@ -158,7 +158,7 @@ export class CompatibilidadPlanetariaComponent implements OnInit {
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
           this.router.navigateByUrl(
-            `/configuracion/compatibilidad-planetaria/${resp.compatibilidadPlanetaria._id}`
+            `/configuraciones/compatibilidad-planetaria/${resp.compatibilidadPlanetaria._id}`
           );
         });
     }

@@ -67,7 +67,7 @@ export class PartidoComponent implements OnInit {
       .pipe(delay(100))
       .subscribe((partido) => {
         if (!partido) {
-          return this.router.navigateByUrl(`/mantenimiento/partidos`);
+          return this.router.navigateByUrl(`/mantenimientos/partidos`);
         }
 
         const {
@@ -127,7 +127,7 @@ export class PartidoComponent implements OnInit {
         .crearPartido(this.partidoForm.value)
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
-          this.router.navigateByUrl(`/mantenimiento/partido/${resp.partido._id}`);
+          this.router.navigateByUrl(`/mantenimientos/partido/${resp.partido._id}`);
         });
     }
   }*/

@@ -59,7 +59,7 @@ export class CuerpoFirmamentoComponent implements OnInit {
 
   private crearConfigCuerpoCelesteGrupo() {
     return new FormGroup({
-      cuerpoCelesteId: new FormControl('', Validators.required),
+      cuerpoCeleste: new FormControl('', Validators.required),
     });
   }
 
@@ -104,7 +104,7 @@ export class CuerpoFirmamentoComponent implements OnInit {
       .pipe(delay(100))
       .subscribe((cuerpoFirmamento) => {
         if (!cuerpoFirmamento) {
-          return this.router.navigateByUrl(`/configuracion/cuerpo-firmamento`);
+          return this.router.navigateByUrl(`/configuraciones/cuerpo-firmamento`);
         }
 
         const {
@@ -159,7 +159,7 @@ export class CuerpoFirmamentoComponent implements OnInit {
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
           this.router.navigateByUrl(
-            `/configuracion/cuerpo-firmamento/${resp.cuerpoFirmamento._id}`
+            `/configuraciones/cuerpo-firmamento/${resp.cuerpoFirmamento._id}`
           );
         });
     }

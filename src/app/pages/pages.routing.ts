@@ -18,21 +18,21 @@ const routes: Routes = [
 },
 
     {
-      path: 'mantenimiento',
+      path: 'mantenimientos',
       component: PagesComponent,
       canActivate: [ AuthGuard ],
       canLoad: [ AuthGuard ],
       loadChildren: () => import('./mantenimientos/mantenimientos-child-routes.module').then( m => m.MantenimientosChildRoutesModule )
   },
   {
-    path: 'configuracion',
+    path: 'configuraciones',
     component: PagesComponent,
     canActivate: [ AuthGuard ],
     canLoad: [ AuthGuard ],
     loadChildren: () => import('./configuraciones/configuraciones-child-routes.module').then( m => m.ConfiguracionesChildRoutesModule )
 },
 {
-  path: 'estrategia',
+  path: 'estrategias',
   component: PagesComponent,
   canActivate: [ AuthGuard ],
   canLoad: [ AuthGuard ],
