@@ -12,9 +12,8 @@ import { RouterModule } from '@angular/router';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { DataTablesModule } from 'angular-datatables';
-
-
-
+import { EstrategiasComponent } from './estrategias/estrategias.component';
+import { EstrategiaComponent } from './estrategias/estrategia.component';
 
 
 @NgModule({
@@ -25,6 +24,8 @@ import { DataTablesModule } from 'angular-datatables';
     CompatibilidadPlanetariaComponent,
     CuerposFirmamentoComponent,
     CuerpoFirmamentoComponent,
+    EstrategiasComponent,
+    EstrategiaComponent
   ],
   exports: [
   ],

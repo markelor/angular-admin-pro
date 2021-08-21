@@ -50,7 +50,9 @@ export class BusquedasService {
   private transformarJugadores(resultados: any[]): Jugador[] {
     return resultados;
   }
-  private transformarRelacionesPlanetarias(resultados: any[]): RelacionPlanetaria[] {
+  private transformarRelacionesPlanetarias(
+    resultados: any[]
+  ): RelacionPlanetaria[] {
     return resultados;
   }
 
@@ -60,7 +62,15 @@ export class BusquedasService {
   }
 
   buscar(
-    tipo: 'usuarios' | 'deportes' | 'jugadores' | 'relaciones-planetarias' |'compatibilidades-planetarias'|'cuerpos-celestes'|'cuerpos-firmamento',
+    tipo:
+      | 'usuarios'
+      | 'deportes'
+      | 'jugadores'
+      | 'relaciones-planetarias'
+      | 'compatibilidades-planetarias'
+      | 'cuerpos-celestes'
+      | 'cuerpos-firmamento'
+      | 'estrategias',
     termino: string
   ) {
     const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;

@@ -12,7 +12,7 @@ import { EstrategiasComponent } from './estrategias/estrategias.component';
 import { EstrategiaComponent } from './estrategias/estrategia.component';
 
 const childRoutes: Routes = [
-  { path: '', component: RelacionesPlanetariasComponent,/* data: { titulo: 'Dashboard' }*/ },
+  { path: '', component: RelacionesPlanetariasComponent,   data: { titulo: 'Configuracion de relaciones planetarias' } },
   // Configuraciones
   {
     path: 'relaciones-planetarias',

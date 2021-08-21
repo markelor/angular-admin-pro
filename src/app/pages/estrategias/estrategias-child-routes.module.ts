@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HistoricoPartidosComponent } from '../estrategias/historico-partidos/historico-partidos.component';
 
 const childRoutes: Routes = [
-  //{ path: '', component: EstrategiasComponent,/* data: { titulo: 'Dashboard' }*/ },
-
+{ path: '', component: HistoricoPartidosComponent, data: { titulo: 'Historico partido' } },
+{
+  path: 'historico-partidos',
+  component: HistoricoPartidosComponent,
+  data: { titulo: 'Historico partidos' },
+},
 
 ];
 

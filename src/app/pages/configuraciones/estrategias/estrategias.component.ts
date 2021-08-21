@@ -50,7 +50,7 @@ export class EstrategiasComponent implements OnInit, OnDestroy {
     }
 
     this.busquedasService
-      .buscar('compatibilidades-planetarias', termino)
+      .buscar('estrategias', termino)
       .subscribe((resp: Estrategia[]) => {
         this.estrategias = resp;
       });
@@ -59,7 +59,7 @@ export class EstrategiasComponent implements OnInit, OnDestroy {
 
   borrarEstrategia(estrategia: Estrategia) {
     Swal.fire({
-      title: '¿Borrar compatibilidad planetaria?',
+      title: '¿Borrar estrategia?',
       text: `Esta a punto de borrar a ${estrategia.nombre}`,
       icon: 'question',
       showCancelButton: true,
@@ -71,7 +71,7 @@ export class EstrategiasComponent implements OnInit, OnDestroy {
           .subscribe((resp) => {
             this.cargarEstrategias();
             Swal.fire(
-              'Compatibilidad planetaria borrada',
+              'Estrategia borrada',
               `${estrategia.nombre} fue eliminado correctamente`,
               'success'
             );
