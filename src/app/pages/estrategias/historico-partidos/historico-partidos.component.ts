@@ -50,12 +50,13 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
   cargarHistoricoPartidos(estrategia:Estrategia) {
     console.log(estrategia);
     this.cargando = true;
-    /*this.historicoPartidoService
-      .cargarHistoricoPartidos()
+    this.historicoPartidoService
+      .cargarHistoricoPartidos(estrategia)
       .subscribe((historicoPartidos) => {
+        console.log(historicoPartidos);
         this.cargando = false;
         this.historicoPartidos = historicoPartidos;
-      });*/
+      });
   }
 
   /*buscar(termino: string) {

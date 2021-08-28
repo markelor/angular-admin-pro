@@ -43,8 +43,8 @@ export class EstrategiaComponent implements OnInit {
       descripcion: new FormControl('', Validators.required),
       cuerposFirmamentoNatal: new FormControl('', Validators.required),
       cuerposFirmamentoTransitos: new FormControl('', Validators.required),
-      compatibilidadPlanetaria: new FormControl('', Validators.required),
-      relacionPlanetaria: new FormControl('', Validators.required),
+      compatibilidadesPlanetarias: new FormControl('', Validators.required),
+      relacionesPlanetarias: new FormControl('', Validators.required),
     });
     this.cargarCuerposFirmamento();
     this.cargarCompatibilidadesPlanetarias();
@@ -106,8 +106,8 @@ export class EstrategiaComponent implements OnInit {
           descripcion,
           cuerposFirmamentoNatal,
           cuerposFirmamentoTransitos,
-          compatibilidadPlanetaria,
-          relacionPlanetaria,
+          compatibilidadesPlanetarias,
+          relacionesPlanetarias,
         } = estrategia;
         this.estrategiaSeleccionado = estrategia;
 
@@ -116,8 +116,8 @@ export class EstrategiaComponent implements OnInit {
           descripcion,
           cuerposFirmamentoNatal,
           cuerposFirmamentoTransitos,
-          compatibilidadPlanetaria,
-          relacionPlanetaria,
+          compatibilidadesPlanetarias,
+          relacionesPlanetarias,
         });
       });
   }
