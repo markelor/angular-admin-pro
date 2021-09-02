@@ -52,7 +52,142 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
     this.cargando = true;
     this.historicoPartidoService
       .cargarHistoricoPartidos(estrategia)
+      .subscribe((historicoPartidos: any) => {
+
+        const arrayAcierto = [];
+        const arrayFallo = [];
+        let acierto = 0;
+        let fallo = 0;
+        let empate = 0;
+
+        historicoPartidos.historicoPartidos.forEach(
+          (historicoPartido) => {
+            const jugador1Puntos =
+              historicoPartido.jugador1Natal.relacionesPlanetarias
+                .totalPuntosAspectos +
+              historicoPartido.jugador1Natal.relacionesPlanetarias
+                .totalPuntosCompatibilidad +
+              historicoPartido.jugador1Transitos.relacionesPlanetarias
+                .totalPuntosAspectos +
+              historicoPartido.jugador1Transitos.relacionesPlanetarias
+                .totalPuntosCompatibilidad;
+            const jugador2Puntos =
+              historicoPartido.jugador2Natal.relacionesPlanetarias
+                .totalPuntosAspectos +
+              historicoPartido.jugador2Natal.relacionesPlanetarias
+                .totalPuntosCompatibilidad +
+              historicoPartido.jugador2Transitos.relacionesPlanetarias
+                .totalPuntosAspectos +
+              historicoPartido.jugador2Transitos.relacionesPlanetarias
+                .totalPuntosCompatibilidad;
+            historicoPartido.partido.jugador1Puntos = jugador1Puntos;
+            historicoPartido.partido.jugador2Puntos = jugador2Puntos;
+            if (
+              jugador1Puntos > jugador2Puntos &&
+              historicoPartido.partido.ganador ===
+                historicoPartido.partido.jugador1.nombre &&
+              Math.abs(jugador1Puntos - jugador2Puntos) > 100
+            ) {
+              arrayAcierto.push(historicoPartido);
+              acierto++;
+            } else if (
+              jugador1Puntos < jugador2Puntos &&
+              historicoPartido.partido.ganador ===
+                historicoPartido.partido.jugador2.nombre &&
+              Math.abs(jugador2Puntos - jugador1Puntos) > 100
+            ) {
+              arrayAcierto.push(historicoPartido);
+              acierto++;
+            } else if (
+              jugador1Puntos > jugador2Puntos &&
+              historicoPartido.partido.ganador ===
+                historicoPartido.partido.jugador2.nombre &&
+              Math.abs(jugador1Puntos - jugador2Puntos) > 100
+            ) {
+              arrayFallo.push(historicoPartido);
+              fallo++;
+            } else if (
+              jugador1Puntos < jugador2Puntos &&
+              historicoPartido.partido.ganador ===
+                historicoPartido.partido.jugador1.nombre &&
+              Math.abs(jugador2Puntos - jugador1Puntos) > 100
+            ) {
+              arrayFallo.push(historicoPartido);
+              fallo++;
+            } else {
+              empate++;
+            }
+            /* console.log('---------------------------------------');
+            console.log(acierto);
+            console.log('++++++++++++++++++++++++++++++++++++++++');*/
+
+
+          }
+        );
+        console.log('----------------------------------');
+        console.log('acierto', acierto),
+        console.log('fallo', fallo);
+        console.log('empate', empate);
+        //arrayAcierto.forEach((element, index) => {
+/* console.log('*************************************ACIERTO*********************************')
+    console.log('-------NATAL JUGADOR1------'+index);
+    console.log(element.jugador1Natal.relacionesPlanetarias);
+    console.log('-------TRANSITOS JUGADOR1------'+index);
+    console.log(element.jugador1Transitos.relacionesPlanetarias);
+    console.log('-------JUGADOR1 PUNTOS------'+index)
+    console.log(element.partido.jugador1Puntos);
+    console.log('-------NATAL JUGADOR2------'+index);
+    console.log(element.jugador2Natal.relacionesPlanetarias);
+    console.log('-------TRANSITOS JUGADOR2------'+index);
+    console.log(element.jugador2Transitos.relacionesPlanetarias);
+    console.log('-------JUGADOR2 PUNTOS------'+index)
+    console.log(element.partido.jugador2Puntos);
+    console.log('-------JUGADOR1------'+index)
+    console.log(element.partido.jugador1.nombre);
+    console.log('-------JUGADOR2------'+index)
+    console.log(element.partido.jugador2.nombre);
+    console.log('-------RESULTADO------'+index)
+    console.log(element.partido.resultado);
+    console.log('-------GANADOR------'+index)
+    console.log(element.partido.ganador);*/
+/*  });
+        arrayFallo.forEach((element, index) => {
+          /* console.log('*************************************FALLO*********************************')
+    console.log('-------NATAL JUGADOR1------'+index);
+    console.log(element.jugador1Natal.relacionesPlanetarias);
+    console.log('-------TRANSITOS JUGADOR1------'+index);
+    console.log(element.jugador1Transitos.relacionesPlanetarias);
+    console.log('-------JUGADOR1 PUNTOS------'+index)
+    console.log(element.partido.jugador1Puntos);
+    console.log('-------NATAL JUGADOR2------'+index);
+    console.log(element.jugador2Natal.relacionesPlanetarias);
+    console.log('-------TRANSITOS JUGADOR2------'+index);
+    console.log(element.jugador2Transitos.relacionesPlanetarias);
+    console.log('-------JUGADOR2 PUNTOS------'+index)
+    console.log(element.partido.jugador2Puntos);
+    console.log('-------JUGADOR1------'+index)
+    console.log(element.partido.jugador1.nombre);
+    console.log('-------JUGADOR2------'+index)
+    console.log(element.partido.jugador2.nombre);
+    console.log('-------RESULTADO------'+index)
+    console.log(element.partido.resultado);
+    console.log('-------GANADOR------'+index)
+    console.log(element.partido.ganador);*/
+
+        this.cargando = false;
+        this.historicoPartidos = historicoPartidos;
+
+   });
+
+}
+
+  aprenderCompatibilidades(estrategia:Estrategia) {
+    console.log(estrategia);
+    this.cargando = true;
+    this.historicoPartidoService
+      .aprenderCompatibilidades(estrategia)
       .subscribe((historicoPartidos) => {
+
         console.log(historicoPartidos);
         this.cargando = false;
         this.historicoPartidos = historicoPartidos;

@@ -33,25 +33,13 @@ export class HistoricoPartidoService {
       );
   }
 
-  obtenerHistoricoPartidoPorId(id: string) {
-    const url = `${base_url}/historico-partidos/${id}`;
-    return this.http
-      .get(url, this.headers)
-      .pipe(map((resp: { ok: boolean; historicoPartido: HistoricoPartido }) => resp.historicoPartido));
+  aprenderCompatibilidades(estrategia:Estrategia) {
+    const url = `${base_url}/historico-partidos/aprender-compatibilidades/${estrategia.compatibilidadesPlanetarias._id}`;
+    return this.http.put(url, estrategia, this.headers)
+      .pipe(
+        map((resp: { ok: boolean; historicoPartidos: HistoricoPartido[] }) => resp.historicoPartidos)
+      );
   }
 
-  crearHistoricoPartido(historicoPartido: HistoricoPartido) {
-    const url = `${base_url}/historico-partidos`;
-    return this.http.post(url, historicoPartido, this.headers);
-  }
 
-  actualizarHistoricoPartido(historicoPartido: HistoricoPartido) {
-    const url = `${base_url}/historico-partidos/${historicoPartido._id}`;
-    return this.http.put(url, historicoPartido, this.headers);
-  }
-
-  borrarHistoricoPartido(_id: string) {
-    const url = `${base_url}/historico-partidos/${_id}`;
-    return this.http.delete(url, this.headers);
-  }
 }
