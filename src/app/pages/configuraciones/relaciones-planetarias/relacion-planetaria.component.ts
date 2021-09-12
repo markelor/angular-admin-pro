@@ -30,10 +30,15 @@ export class RelacionPlanetariaComponent implements OnInit {
   ) {}
   aspectos: string[] = [
     'Conjuncion',
+    'Semisextil',
+    'Semicuadratura',
     'Sextil',
     'Cuadratura',
-    'Oposicion',
     'Trigono',
+    'Sesquicuadratura',
+    'Quincuncio',
+    'Oposicion',
+
   ];
 
   ngOnInit(): void {

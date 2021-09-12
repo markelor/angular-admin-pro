@@ -29,6 +29,7 @@ export class BusquedasService {
   }
 
   private transformarUsuarios(resultados: any[]): Usuario[] {
+    console.log(resultados);
     return resultados.map(
       (user) =>
         new Usuario(
@@ -78,6 +79,9 @@ export class BusquedasService {
       .get<Usuario[] | Deporte[] | Jugador[]>(url, this.headers)
       .pipe(
         map((resp: any) => {
+          console.log(tipo);
+          console.log(termino);
+          console.log(resp);
           switch (tipo) {
             case 'usuarios':
               return this.transformarUsuarios(resp.resultados);

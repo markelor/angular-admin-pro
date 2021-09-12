@@ -86,7 +86,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
               jugador1Puntos > jugador2Puntos &&
               historicoPartido.partido.ganador ===
                 historicoPartido.partido.jugador1.nombre &&
-              Math.abs(jugador1Puntos - jugador2Puntos) > 100
+              Math.abs(jugador1Puntos - jugador2Puntos) > 60
             ) {
               arrayAcierto.push(historicoPartido);
               acierto++;
@@ -94,7 +94,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
               jugador1Puntos < jugador2Puntos &&
               historicoPartido.partido.ganador ===
                 historicoPartido.partido.jugador2.nombre &&
-              Math.abs(jugador2Puntos - jugador1Puntos) > 100
+              Math.abs(jugador2Puntos - jugador1Puntos) > 60
             ) {
               arrayAcierto.push(historicoPartido);
               acierto++;
@@ -102,7 +102,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
               jugador1Puntos > jugador2Puntos &&
               historicoPartido.partido.ganador ===
                 historicoPartido.partido.jugador2.nombre &&
-              Math.abs(jugador1Puntos - jugador2Puntos) > 100
+              Math.abs(jugador1Puntos - jugador2Puntos) > 60
             ) {
               arrayFallo.push(historicoPartido);
               fallo++;
@@ -110,7 +110,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
               jugador1Puntos < jugador2Puntos &&
               historicoPartido.partido.ganador ===
                 historicoPartido.partido.jugador1.nombre &&
-              Math.abs(jugador2Puntos - jugador1Puntos) > 100
+              Math.abs(jugador2Puntos - jugador1Puntos) > 60
             ) {
               arrayFallo.push(historicoPartido);
               fallo++;
@@ -128,6 +128,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
         console.log('acierto', acierto),
         console.log('fallo', fallo);
         console.log('empate', empate);
+        console.log(arrayFallo);
         //arrayAcierto.forEach((element, index) => {
 /* console.log('*************************************ACIERTO*********************************')
     console.log('-------NATAL JUGADOR1------'+index);

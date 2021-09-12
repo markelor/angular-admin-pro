@@ -150,7 +150,7 @@ export class EstrategiaComponent implements OnInit {
         .subscribe((resp: any) => {
           Swal.fire('Creado', `${nombre} creado correctamente`, 'success');
           this.router.navigateByUrl(
-            `/configuraciones/estrategias/${resp.Estrategia._id}`
+            `/configuraciones/estrategia/${resp.estrategia._id}`
           );
         });
     }
