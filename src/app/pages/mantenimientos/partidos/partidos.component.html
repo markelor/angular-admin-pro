@@ -2,34 +2,6 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-body">
-
-        <h4 class="card-title">Jugador</h4>
-        <h6 class="card-subtitle">Actualizar información</h6>
-
-        <form class="form-horizontal p-t-20" [formGroup]="partidosForm" (submit)="anadirPartidosDb()">
-          <div class="form-group row">
-            <label for="deporte" class="col-sm-3 control-label">Deporte</label>
-            <div class="col-sm-9">
-              <div class="input-group">
-                <select class="form-control" formControlName="deporte">
-                  <option value="">Seleccione Deporte</option>
-                  <option *ngFor="let deporte of deportes" [value]="deporte._id">
-                    {{ deporte.nombre }}
-                  </option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row m-b-0">
-            <div class="offset-sm-3 col-sm-9">
-              <button type="submit" [disabled]="partidosForm.invalid" class="btn btn-success waves-effect waves-light">
-                <i class="fa fa-save"></i>
-                Guardar
-              </button>
-            </div>
-          </div>
-
-        </form>
         <div class="table-responsive">
           <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerGeneral"
             class="table table-striped table-bordered" cellspacing="0" width="100%">

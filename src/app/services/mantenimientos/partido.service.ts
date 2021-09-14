@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
 import { Partido } from '../../models/mantenimientos/partido.model';
+import { Estrategia } from 'src/app/models/configuraciones/estrategia.model';
 
 const base_url = environment.base_url;
 
@@ -25,34 +26,18 @@ export class PartidoService {
     };
   }
 
-  cargarPartidos() {
+  cargarPartidosGuardados() {
     const url = `${base_url}/partidos`;
     return this.http
       .get(url, this.headers)
-      .pipe(
-        map((resp: { ok: boolean; partidos: Partido[] }) => resp.partidos)
-      );
+      .pipe(map((resp: { ok: boolean; partidos: Partido[] }) => resp.partidos));
   }
-
-  obtenerPartidoPorId(id: string) {
-    const url = `${base_url}/partidos/${id}`;
+  cargarPartidosDiarios(estrategia:Estrategia) {
+    const url = `${base_url}/partidos/hoy`;
     return this.http
-      .get(url, this.headers)
-      .pipe(map((resp: { ok: boolean; partido: Partido }) => resp.partido));
-  }
-
-  crearPartidos(deporte: string) {
-    const url = `${base_url}/partidos`;
-    return this.http.post(url, deporte, this.headers);
-  }
-
-  /*actualizarPartido(partido: Partido) {
-    const url = `${base_url}/partidos/${partido._id}`;
-    return this.http.put(url, partido, this.headers);
-  }*/
-
-  borrarPartido(_id: string) {
-    const url = `${base_url}/partidos/${_id}`;
-    return this.http.delete(url, this.headers);
+      .post(url, estrategia,this.headers)
+      .pipe(map((resp: any) => {
+        return resp.partidosPorJugar.historicoPartidos;
+      }));
   }
 }

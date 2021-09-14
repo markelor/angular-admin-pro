@@ -40,7 +40,7 @@ export class PartidosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Inicializar datos
     this.dtOptions = this.buildDtOptions();
-    this.cargarPartidos();
+    this.cargarPartidosGuardados();
 
 
     this.partidosForm = this.fb.group({
@@ -59,15 +59,9 @@ export class PartidosComponent implements OnInit, OnDestroy {
     });
   }
 
-  anadirPartidosDb(): void {
-    this.partidoService.crearPartidos(this.partidosForm.value).subscribe((partidos) => {
-      console.log(partidos)
-    });
-  }
-
-  cargarPartidos() {
+  cargarPartidosGuardados() {
     this.cargando = true;
-    this.partidoService.cargarPartidos().subscribe((partidos) => {
+    this.partidoService.cargarPartidosGuardados().subscribe((partidos) => {
       console.log(partidos);
       this.cargando = false;
       this.partidos = partidos;
@@ -89,40 +83,6 @@ export class PartidosComponent implements OnInit, OnDestroy {
     };
   }
 
-  /* buscar(termino: string) {
-    if (termino.length === 0) {
-      return this.cargarPartidos();
-    }
-
-    this.busquedasService.buscar('partidos', termino).subscribe((resp:Partido[]) => {
-      this.partidos = resp;
-    });
-  }
-
-  abrirModal(partido: Partido) {
-    this.modalImagenService.abrirModal('partidos', partido._id, partido.img);
-  }
-
-  borrarPartido(partido: Partido) {
-    Swal.fire({
-      title: '¿Borrar partido?',
-      text: `Esta a punto de borrar a ${partido.nombre}`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Si, borrarlo',
-    }).then((result) => {
-      if (result.value) {
-        this.partidoService.borrarPartido(partido._id).subscribe((resp) => {
-          this.cargarPartidos();
-          Swal.fire(
-            'Partido borrado',
-            `${partido.nombre} fue eliminado correctamente`,
-            'success'
-          );
-        });
-      }
-    });
-  }*/
   ngOnDestroy(){
     this.dtTriggerGeneral.unsubscribe();
   }
