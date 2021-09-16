@@ -117,11 +117,6 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
             } else {
               empate++;
             }
-            /* console.log('---------------------------------------');
-            console.log(acierto);
-            console.log('++++++++++++++++++++++++++++++++++++++++');*/
-
-
           }
         );
         console.log('----------------------------------');
@@ -129,51 +124,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
         console.log('fallo', fallo);
         console.log('empate', empate);
         console.log(arrayFallo);
-        //arrayAcierto.forEach((element, index) => {
-/* console.log('*************************************ACIERTO*********************************')
-    console.log('-------NATAL JUGADOR1------'+index);
-    console.log(element.jugador1Natal.relacionesPlanetarias);
-    console.log('-------TRANSITOS JUGADOR1------'+index);
-    console.log(element.jugador1Transitos.relacionesPlanetarias);
-    console.log('-------JUGADOR1 PUNTOS------'+index)
-    console.log(element.partido.jugador1Puntos);
-    console.log('-------NATAL JUGADOR2------'+index);
-    console.log(element.jugador2Natal.relacionesPlanetarias);
-    console.log('-------TRANSITOS JUGADOR2------'+index);
-    console.log(element.jugador2Transitos.relacionesPlanetarias);
-    console.log('-------JUGADOR2 PUNTOS------'+index)
-    console.log(element.partido.jugador2Puntos);
-    console.log('-------JUGADOR1------'+index)
-    console.log(element.partido.jugador1.nombre);
-    console.log('-------JUGADOR2------'+index)
-    console.log(element.partido.jugador2.nombre);
-    console.log('-------RESULTADO------'+index)
-    console.log(element.partido.resultado);
-    console.log('-------GANADOR------'+index)
-    console.log(element.partido.ganador);*/
-/*  });
-        arrayFallo.forEach((element, index) => {
-          /* console.log('*************************************FALLO*********************************')
-    console.log('-------NATAL JUGADOR1------'+index);
-    console.log(element.jugador1Natal.relacionesPlanetarias);
-    console.log('-------TRANSITOS JUGADOR1------'+index);
-    console.log(element.jugador1Transitos.relacionesPlanetarias);
-    console.log('-------JUGADOR1 PUNTOS------'+index)
-    console.log(element.partido.jugador1Puntos);
-    console.log('-------NATAL JUGADOR2------'+index);
-    console.log(element.jugador2Natal.relacionesPlanetarias);
-    console.log('-------TRANSITOS JUGADOR2------'+index);
-    console.log(element.jugador2Transitos.relacionesPlanetarias);
-    console.log('-------JUGADOR2 PUNTOS------'+index)
-    console.log(element.partido.jugador2Puntos);
-    console.log('-------JUGADOR1------'+index)
-    console.log(element.partido.jugador1.nombre);
-    console.log('-------JUGADOR2------'+index)
-    console.log(element.partido.jugador2.nombre);
-    console.log('-------RESULTADO------'+index)
-    console.log(element.partido.resultado);
-    console.log('-------GANADOR------'+index)
-    console.log(element.partido.ganador);*/
+
 
         this.cargando = false;
         this.historicoPartidos = historicoPartidos;
@@ -194,40 +145,4 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
         this.historicoPartidos = historicoPartidos;
       });
   }
-
-  /*buscar(termino: string) {
-    if (termino.length === 0) {
-      return this.cargarHistoricoPartidos();
-    }
-
-    this.busquedasService
-      .buscar('compatibilidades-planetarias', termino)
-      .subscribe((resp: HistoricoPartido[]) => {
-        this.historicoPartidos = resp;
-      });
-  }
-
-
-  borrarHistoricoPartido(historicoPartido: HistoricoPartido) {
-    Swal.fire({
-      title: '¿Borrar compatibilidad planetaria?',
-      text: `Esta a punto de borrar a ${historicoPartido.nombre}`,
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Si, borrarlo',
-    }).then((result) => {
-      if (result.value) {
-        this.historicoPartidoService
-          .borrarHistoricoPartido(historicoPartido._id)
-          .subscribe((resp) => {
-            this.cargarHistoricoPartidos();
-            Swal.fire(
-              'Compatibilidad planetaria borrada',
-              `${historicoPartido.nombre} fue eliminado correctamente`,
-              'success'
-            );
-          });
-      }
-    });
-  }*/
 }

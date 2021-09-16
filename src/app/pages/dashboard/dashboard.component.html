@@ -8,10 +8,120 @@
   </div>
 </div>
 
-<div class="row" *ngIf="!cargando">
+<div class="row" >
   <div class="col-12">
     <div class="card">
       <div class="card-body">
+        <div [hidden]="!partidosJugadoresRegistrados.length"class="table-responsive">
+          <table
+            datatable
+            [dtOptions]="dtOptions"
+            [dtTrigger]="dtTriggerPartidosJugadoresRegistrados"
+            class="table table-striped table-bordered"
+            cellspacing="0"
+            width="100%"
+          >
+            <thead>
+              <tr>
+                <th>HORA INICIO</th>
+                <th>CATEGORIA</th>
+                <th>CIRCUITO</th>
+                <th>PISTA</th>
+                <th>JUGADORES</th>
+                <th>P/N/ASPECTO</th>
+                <th>P/N/COMP</th>
+                <th>P/T/ASPECTO</th>
+                <th>P/T/COMP</th>
+                <th>P/TOTAL</th>
+                <th>DIFERENCIA</th>
+                <th>GANADOR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container
+                *ngFor="
+                  let partidoJugadorRegistrado of partidosJugadoresRegistrados
+                "
+              >
+                <tr>
+                  <td>{{ partidoJugadorRegistrado.partido.horaInicio }}</td>
+                  <td>{{ partidoJugadorRegistrado.partido.categoria }}</td>
+                  <td>{{ partidoJugadorRegistrado.partido.circuito }}</td>
+                  <td>{{ partidoJugadorRegistrado.partido.tipoPista }}</td>
+                  <td>
+                    {{ partidoJugadorRegistrado.partido.jugador1.nombre
+                    }}<br />{{
+                      partidoJugadorRegistrado.partido.jugador2.nombre
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.jugador1Natal
+                        .relacionesPlanetarias.totalPuntosAspectos
+                    }}<br />{{
+                      partidoJugadorRegistrado.jugador2Natal
+                        .relacionesPlanetarias.totalPuntosAspectos
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.jugador1Natal
+                        .relacionesPlanetarias.totalPuntosCompatibilidad
+                    }}<br />{{
+                      partidoJugadorRegistrado.jugador2Natal
+                        .relacionesPlanetarias.totalPuntosCompatibilidad
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.jugador1Transitos
+                        .relacionesPlanetarias.totalPuntosAspectos
+                    }}<br />{{
+                      partidoJugadorRegistrado.jugador2Transitos
+                        .relacionesPlanetarias.totalPuntosAspectos
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.jugador1Transitos
+                        .relacionesPlanetarias.totalPuntosCompatibilidad
+                    }}<br />{{
+                      partidoJugadorRegistrado.jugador2Transitos
+                        .relacionesPlanetarias.totalPuntosCompatibilidad
+                    }}
+                  </td>
+
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.jugador1Natal
+                        .relacionesPlanetarias.totalPuntosAspectos +
+                        partidoJugadorRegistrado.jugador1Natal
+                          .relacionesPlanetarias.totalPuntosCompatibilidad +
+                        partidoJugadorRegistrado.jugador1Transitos
+                          .relacionesPlanetarias.totalPuntosAspectos +
+                        partidoJugadorRegistrado.jugador1Transitos
+                          .relacionesPlanetarias.totalPuntosCompatibilidad
+                    }}<br />
+                    {{
+                      partidoJugadorRegistrado.jugador2Natal
+                        .relacionesPlanetarias.totalPuntosAspectos +
+                        partidoJugadorRegistrado.jugador2Natal
+                          .relacionesPlanetarias.totalPuntosCompatibilidad +
+                        partidoJugadorRegistrado.jugador2Transitos
+                          .relacionesPlanetarias.totalPuntosAspectos +
+                        partidoJugadorRegistrado.jugador2Transitos
+                          .relacionesPlanetarias.totalPuntosCompatibilidad
+                    }}
+                  </td>
+                  <td>
+                    {{ partidoJugadorRegistrado.partido.diferenciaPuntos }}
+                  </td>
+                  <td>{{ partidoJugadorRegistrado.partido.ganador }}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
         <form class="form-horizontal p-t-20" [formGroup]="estrategiaForm">
           <!--Estrategia-->
           <div class="form-group row">
@@ -45,133 +155,6 @@
             </div>
           </div>
         </form>
-
-        <div class="table-responsive">
-          <table
-            datatable
-            [dtOptions]="dtOptions"
-            [dtTrigger]="dtTriggerPartidosJugadoresRegistrados"
-            class="table table-striped table-bordered"
-            cellspacing="0"
-            width="100%"
-          >
-            <thead>
-              <tr>
-                <!--<th class="w100">FOTO</th>-->
-                <th>HORA INICIO</th>
-                <th>CATEGORIA</th>
-                <th>CIRCUITO</th>
-                <th>PISTA</th>
-                <th>JUGADORES</th>
-                <th>P/N/ASPECTO</th>
-                <th>P/N/COMP</th>
-                <th>P/T/ASPECTO</th>
-                <th>P/T/COMP</th>
-                <th>P/TOTAL</th>
-                <th>DIFERENCIA</th>
-                <!--<th class="w100 text-nowrap">ACCIONES</th>-->
-              </tr>
-            </thead>
-            <tbody>
-              <ng-container
-                *ngFor="
-                  let partidoJugadorRegistrado of partidosJugadoresRegistrados
-                "
-              >
-                <tr>
-                  <td>{{ partidoJugadorRegistrado.partido.horaInicio }}</td>
-                  <td>{{ partidoJugadorRegistrado.partido.categoria }}</td>
-                  <td>{{ partidoJugadorRegistrado.partido.circuito }}</td>
-                  <td>{{ partidoJugadorRegistrado.partido.tipoPista }}</td>
-                  <td>
-                    {{ partidoJugadorRegistrado.partido.jugador1.nombre }}<br>{{
-                      partidoJugadorRegistrado.partido.jugador2.nombre
-                    }}
-                  </td>
-                  <td>
-                    {{
-                      partidoJugadorRegistrado.jugador1Natal
-                        .relacionesPlanetarias.totalPuntosAspectos
-                    }}<br>{{
-                      partidoJugadorRegistrado.jugador2Natal
-                        .relacionesPlanetarias.totalPuntosAspectos
-                    }}
-                  </td>
-                  <td>
-                    {{
-                      partidoJugadorRegistrado.jugador1Natal
-                        .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}<br>{{
-                      partidoJugadorRegistrado.jugador2Natal
-                        .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}
-                  </td>
-                  <td>
-                    {{
-                      partidoJugadorRegistrado.jugador1Transitos
-                        .relacionesPlanetarias.totalPuntosAspectos
-                    }}<br>{{
-                      partidoJugadorRegistrado.jugador2Transitos
-                        .relacionesPlanetarias.totalPuntosAspectos
-                    }}
-                  </td>
-                  <td>
-                    {{
-                      partidoJugadorRegistrado.jugador1Transitos
-                        .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}<br>{{
-                      partidoJugadorRegistrado.jugador2Transitos
-                        .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}
-                  </td>
-
-                  <td>
-                    {{
-                      partidoJugadorRegistrado.jugador1Natal
-                        .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador1Natal
-                          .relacionesPlanetarias.totalPuntosCompatibilidad +
-                        partidoJugadorRegistrado.jugador1Transitos
-                          .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador1Transitos
-                          .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}<br>
-                    {{
-                      partidoJugadorRegistrado.jugador2Natal
-                        .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador2Natal
-                          .relacionesPlanetarias.totalPuntosCompatibilidad +
-                        partidoJugadorRegistrado.jugador2Transitos
-                          .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador2Transitos
-                          .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}
-                  </td>
-                  <td>
-                    {{
-                      partidoJugadorRegistrado.jugador1Natal
-                        .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador1Natal
-                          .relacionesPlanetarias.totalPuntosCompatibilidad +
-                        partidoJugadorRegistrado.jugador1Transitos
-                          .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador1Transitos
-                          .relacionesPlanetarias.totalPuntosCompatibilidad +
-                        partidoJugadorRegistrado.jugador2Natal
-                          .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador2Natal
-                          .relacionesPlanetarias.totalPuntosCompatibilidad +
-                        partidoJugadorRegistrado.jugador2Transitos
-                          .relacionesPlanetarias.totalPuntosAspectos +
-                        partidoJugadorRegistrado.jugador2Transitos
-                          .relacionesPlanetarias.totalPuntosCompatibilidad
-                    }}
-                  </td>
-                </tr>
-              </ng-container>
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
