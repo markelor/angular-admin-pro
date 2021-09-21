@@ -1,3 +1,5 @@
+import { Estrategia } from "./estrategia.model";
+
 interface _CompatibilidadPlanetariaUser {
   _id: string;
   nombre: string;
@@ -19,4 +21,11 @@ export class CompatibilidadPlanetaria {
     public _id?: string,
     public usuario?: _CompatibilidadPlanetariaUser
   ) {}
+}
+export interface AprenderCompatibilidades {
+  estrategia:Estrategia,
+  cicloDesde: number;
+  cicloHasta: number;
+  intervalo: number;
+  repeticiones: number;
 }

@@ -8,11 +8,14 @@
   </div>
 </div>
 
-<div class="row" >
+<div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <div [hidden]="!partidosJugadoresRegistrados.length"class="table-responsive">
+        <div
+          [hidden]="!partidosJugadoresRegistrados.length"
+          class="table-responsive"
+        >
           <table
             datatable
             [dtOptions]="dtOptions"
@@ -25,14 +28,18 @@
               <tr>
                 <th>HORA INICIO</th>
                 <th>CATEGORIA</th>
-                <th>CIRCUITO</th>
+                <!--<th>CIRCUITO</th>-->
                 <th>PISTA</th>
                 <th>JUGADORES</th>
-                <th>P/N/ASPECTO</th>
+                <!--<th>P/N/ASPECTO</th>
                 <th>P/N/COMP</th>
                 <th>P/T/ASPECTO</th>
                 <th>P/T/COMP</th>
-                <th>P/TOTAL</th>
+                <th>P/TOTAL</th>-->
+                <th>P/PISTA J1</th>
+                <th>P/PISTA J2</th>
+                <th>P/RACHA J1</th>
+                <th>P/RACHA J2</th>
                 <th>DIFERENCIA</th>
                 <th>GANADOR</th>
               </tr>
@@ -46,7 +53,7 @@
                 <tr>
                   <td>{{ partidoJugadorRegistrado.partido.horaInicio }}</td>
                   <td>{{ partidoJugadorRegistrado.partido.categoria }}</td>
-                  <td>{{ partidoJugadorRegistrado.partido.circuito }}</td>
+                  <!--<td>{{ partidoJugadorRegistrado.partido.circuito }}</td>-->
                   <td>{{ partidoJugadorRegistrado.partido.tipoPista }}</td>
                   <td>
                     {{ partidoJugadorRegistrado.partido.jugador1.nombre
@@ -54,7 +61,8 @@
                       partidoJugadorRegistrado.partido.jugador2.nombre
                     }}
                   </td>
-                  <td>
+
+                  <!--<td>
                     {{
                       partidoJugadorRegistrado.jugador1Natal
                         .relacionesPlanetarias.totalPuntosAspectos
@@ -112,7 +120,36 @@
                         partidoJugadorRegistrado.jugador2Transitos
                           .relacionesPlanetarias.totalPuntosCompatibilidad
                     }}
+                  </td>-->
+
+                  <td>
+                    <span
+                      *ngFor="
+                        let historicoPartidoAgrupado of partidoJugadorRegistrado
+                          .partido.jugador1HistoricoPartidosAgrupados
+                      "
+                    >
+                      {{ historicoPartidoAgrupado.key }}
+                      {{ historicoPartidoAgrupado.totalPartidosGanados }}
+                      <br />
+                    </span>
+
                   </td>
+                  <td>
+                    <span
+                      *ngFor="
+                        let historicoPartidoAgrupado of partidoJugadorRegistrado
+                          .partido.jugador2HistoricoPartidosAgrupados
+                      "
+                    >
+                      {{ historicoPartidoAgrupado.key }}
+                      {{ historicoPartidoAgrupado.totalPartidosGanados }}
+                      <br />
+                    </span>
+
+                  </td>
+                  <td>{{ partidoJugadorRegistrado.partido.rachaJugador1 }}</td>
+                  <td>{{ partidoJugadorRegistrado.partido.rachaJugador2 }}</td>
                   <td>
                     {{ partidoJugadorRegistrado.partido.diferenciaPuntos }}
                   </td>

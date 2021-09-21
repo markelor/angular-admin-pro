@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { HistoricoPartido } from '../../models/estrategias/historico-partido.model';
 import { Estrategia } from 'src/app/models/configuraciones/estrategia.model';
+import { AprenderCompatibilidades } from 'src/app/models/configuraciones/compatibilidad-planetaria.model';
 
 const base_url = environment.base_url;
 
@@ -33,9 +34,9 @@ export class HistoricoPartidoService {
       );
   }
 
-  aprenderCompatibilidades(estrategia:Estrategia) {
-    const url = `${base_url}/historico-partidos/aprender-compatibilidades/${estrategia.compatibilidadesPlanetarias._id}`;
-    return this.http.put(url, estrategia, this.headers)
+  aprenderCompatibilidades(aprenderCompatibilidades:AprenderCompatibilidades) {
+    const url = `${base_url}/historico-partidos/aprender-compatibilidades/${aprenderCompatibilidades.estrategia.compatibilidadesPlanetarias._id}`;
+    return this.http.put(url, aprenderCompatibilidades, this.headers)
       .pipe(
         map((resp: { ok: boolean; historicoPartidos: HistoricoPartido[] }) => resp.historicoPartidos)
       );

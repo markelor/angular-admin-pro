@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Estrategia } from 'src/app/models/configuraciones/estrategia.model';
+import { AgruparPipe } from 'src/app/pipes/agrupar.pipe';
 import { EstrategiaService } from 'src/app/services/configuraciones/estrategia.service';
 import Swal from 'sweetalert2';
 import { HistoricoPartido } from '../../../models/estrategias/historico-partido.model';
@@ -34,6 +35,10 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.estrategiaForm = this.fb.group({
       estrategia: new FormControl('', Validators.required),
+      cicloDesde: new FormControl(70, Validators.required),
+      cicloHasta: new FormControl(60, Validators.required),
+      intervalo: new FormControl(5, Validators.required),
+      repeticiones: new FormControl(5, Validators.required),
     });
     this.cargarEstrategias();
   }
@@ -133,11 +138,10 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
 
 }
 
-  aprenderCompatibilidades(estrategia:Estrategia) {
-    console.log(estrategia);
+  aprenderCompatibilidades() {
     this.cargando = true;
     this.historicoPartidoService
-      .aprenderCompatibilidades(estrategia)
+      .aprenderCompatibilidades(this.estrategiaForm.value)
       .subscribe((historicoPartidos) => {
 
         console.log(historicoPartidos);
