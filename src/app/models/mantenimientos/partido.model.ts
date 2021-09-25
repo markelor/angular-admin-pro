@@ -18,6 +18,7 @@ export class Partido {
         public jugador1:string,
         public jugador2:string,
         public resultado:string,
+        public ganador?: string,
         public usuario?: _PartidoUser,
         public deporte?: Deporte
     ) {}

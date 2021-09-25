@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 
 import { Partido } from '../../models/mantenimientos/partido.model';
+import { _Apuesta } from '../../models/dashboard/apuesta.model';
 import { Estrategia } from 'src/app/models/configuraciones/estrategia.model';
 
 const base_url = environment.base_url;
@@ -32,12 +33,12 @@ export class PartidoService {
       .get(url, this.headers)
       .pipe(map((resp: { ok: boolean; partidos: Partido[] }) => resp.partidos));
   }
-  cargarPartidosDiarios(estrategia:Estrategia) {
+  cargarPartidosDiarios(estrategia: Estrategia) {
     const url = `${base_url}/partidos/hoy`;
-    return this.http
-      .post(url, estrategia,this.headers)
-      .pipe(map((resp: any) => {
+    return this.http.post(url, estrategia, this.headers).pipe(
+      map((resp: { partidosPorJugar: { historicoPartidos: _Apuesta[] } }) => {
         return resp.partidosPorJugar.historicoPartidos;
-      }));
+      })
+    );
   }
 }

@@ -40,6 +40,7 @@
                 <th>P/PISTA J2</th>
                 <th>P/RACHA J1</th>
                 <th>P/RACHA J2</th>
+                <th>C/RACHA</th>
                 <th>DIFERENCIA</th>
                 <th>GANADOR</th>
               </tr>
@@ -130,10 +131,15 @@
                       "
                     >
                       {{ historicoPartidoAgrupado.key }}
-                      {{ historicoPartidoAgrupado.totalPartidosGanados }}
+                      {{
+                        historicoPartidoAgrupado.totalPartidosGanadosJugador1
+                      }}
+                      de
+                      {{
+                        historicoPartidoAgrupado.totalPartidosJugadosJugador1
+                      }}
                       <br />
                     </span>
-
                   </td>
                   <td>
                     <span
@@ -143,13 +149,62 @@
                       "
                     >
                       {{ historicoPartidoAgrupado.key }}
-                      {{ historicoPartidoAgrupado.totalPartidosGanados }}
+                      {{
+                        historicoPartidoAgrupado.totalPartidosGanadosJugador2
+                      }}
+                      de
+                      {{
+                        historicoPartidoAgrupado.totalPartidosJugadosJugador2
+                      }}
                       <br />
                     </span>
-
                   </td>
-                  <td>{{ partidoJugadorRegistrado.partido.rachaJugador1 }}</td>
-                  <td>{{ partidoJugadorRegistrado.partido.rachaJugador2 }}</td>
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.partido
+                        .rachaPartidosGanadosJugador1
+                    }}
+                    de
+                    {{
+                      partidoJugadorRegistrado.partido
+                        .rachaPartidosJugadosJugador1
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      partidoJugadorRegistrado.partido
+                        .rachaPartidosGanadosJugador2
+                    }}
+                    de
+                    {{
+                      partidoJugadorRegistrado.partido
+                        .rachaPartidosJugadosJugador2
+                    }}
+                  </td>
+
+                  <td>
+                    <span
+                      [ngClass]="{
+                        destacado:
+                          partidoJugadorRegistrado.partido.ganador ===
+                          partidoJugadorRegistrado.partido.jugador1.nombre
+                      }"
+                      >{{
+                        partidoJugadorRegistrado.partido.cuotaRachaJugador1
+                      }}</span
+                    >
+                    -
+                    <span
+                      [ngClass]="{
+                        destacado:
+                          partidoJugadorRegistrado.partido.ganador ===
+                          partidoJugadorRegistrado.partido.jugador2.nombre
+                      }"
+                      >{{
+                        partidoJugadorRegistrado.partido.cuotaRachaJugador2
+                      }}</span
+                    >
+                  </td>
                   <td>
                     {{ partidoJugadorRegistrado.partido.diferenciaPuntos }}
                   </td>
