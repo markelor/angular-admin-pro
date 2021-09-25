@@ -38,6 +38,7 @@
                 <th>P/TOTAL</th>-->
                 <th>P/PISTA J1</th>
                 <th>P/PISTA J2</th>
+                <th>C/PISTA</th>
                 <th>P/RACHA J1</th>
                 <th>P/RACHA J2</th>
                 <th>C/RACHA</th>
@@ -52,10 +53,14 @@
                 "
               >
                 <tr>
+                  <!--Hora inicio-->
                   <td>{{ partidoJugadorRegistrado.partido.horaInicio }}</td>
+                  <!--Categoria-->
                   <td>{{ partidoJugadorRegistrado.partido.categoria }}</td>
                   <!--<td>{{ partidoJugadorRegistrado.partido.circuito }}</td>-->
+                  <!--Pista-->
                   <td>{{ partidoJugadorRegistrado.partido.tipoPista }}</td>
+                  <!--Jugadores-->
                   <td>
                     {{ partidoJugadorRegistrado.partido.jugador1.nombre
                     }}<br />{{
@@ -122,7 +127,7 @@
                           .relacionesPlanetarias.totalPuntosCompatibilidad
                     }}
                   </td>-->
-
+                  <!--Puntos pista jugador 1-->
                   <td>
                     <span
                       *ngFor="
@@ -141,6 +146,7 @@
                       <br />
                     </span>
                   </td>
+                  <!--Puntos pista jugador 2-->
                   <td>
                     <span
                       *ngFor="
@@ -159,6 +165,37 @@
                       <br />
                     </span>
                   </td>
+                  <!--Puntos cuota pista-->
+                  <td>
+                    <div
+                      *ngFor="
+                        let cuotaPista of partidoJugadorRegistrado.partido
+                          .cuotaTotalPista
+                      "
+                    >
+                      {{ cuotaPista.pista }}
+                      <span
+                        [ngClass]="{
+                          destacado:
+                            partidoJugadorRegistrado.partido.ganador ===
+                            partidoJugadorRegistrado.partido.jugador1.nombre
+                        }"
+                        >{{ cuotaPista.cuotaTotalPistaJugador1 }}</span
+                      >
+                      -
+                      <span
+                        [ngClass]="{
+                          destacado:
+                            partidoJugadorRegistrado.partido.ganador ===
+                            partidoJugadorRegistrado.partido.jugador2.nombre
+                        }"
+                        >{{ cuotaPista.cuotaTotalPistaJugador2 }}</span
+                      >
+                    </div>
+
+                    <!--Puntos racha jugador 1-->
+                  </td>
+
                   <td>
                     {{
                       partidoJugadorRegistrado.partido
@@ -170,6 +207,7 @@
                         .rachaPartidosJugadosJugador1
                     }}
                   </td>
+                  <!--Puntos racha jugador 2-->
                   <td>
                     {{
                       partidoJugadorRegistrado.partido
@@ -181,7 +219,7 @@
                         .rachaPartidosJugadosJugador2
                     }}
                   </td>
-
+                  <!--Cuota racha -->
                   <td>
                     <span
                       [ngClass]="{

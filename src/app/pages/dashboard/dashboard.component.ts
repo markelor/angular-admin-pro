@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
     this.cargando = true;
     this.partidoService
       .cargarPartidosDiarios(estrategia)
-      .subscribe((partidosJugadoresRegistrados:_Apuesta[]) => {
+      .subscribe((partidosJugadoresRegistrados: _Apuesta[]) => {
         console.log(partidosJugadoresRegistrados);
         this.cargando = false;
         partidosJugadoresRegistrados.forEach((partidoJugadorRegistrado) => {
@@ -149,13 +149,15 @@ export class DashboardComponent implements OnInit {
               partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador2) /
             (partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador1 +
               (partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador2 -
-                partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador2))).toFixed(2);;
-          partidoJugadorRegistrado.partido.cuotaRachaJugador2 =(
+                partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador2))
+          ).toFixed(2);
+          partidoJugadorRegistrado.partido.cuotaRachaJugador2 = (
             (partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador2 +
               partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador1) /
             (partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador2 +
               (partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador1 -
-                partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador1))).toFixed(2);;
+                partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador1))
+          ).toFixed(2);
 
           let jugador1HistoricoPartidosAgrupados: any = this.agrupar.transform(
             partidoJugadorRegistrado.partido.jugador1HistoricoPartidos,
@@ -197,31 +199,42 @@ export class DashboardComponent implements OnInit {
               }
             });
             partidoPista.totalPartidosGanadosJugador2 =
-            contPartidoGanadoTipoPista;
-          partidoPista.totalPartidosJugadosJugador2 =
-            partidoPista.value.length;
+              contPartidoGanadoTipoPista;
+            partidoPista.totalPartidosJugadosJugador2 =
+              partidoPista.value.length;
 
-           /* partidoPista.totalPartidosGanados =
+            /* partidoPista.totalPartidosGanados =
               contPartidoGanadoTipoPista + ' de ' + partidoPista.value.length;*/
           });
           //calcular cuota por pista
+          partidoJugadorRegistrado.partido.cuotaTotalPista = [];
           //jugador 1
           jugador1HistoricoPartidosAgrupados.forEach((partidoPistaJugador1) => {
             //Jugador2
-            /*jugador2HistoricoPartidosAgrupados.forEach(
+            jugador2HistoricoPartidosAgrupados.forEach(
               (partidoPistaJugador2) => {
-                if(partidoPistaJugador1===partidoPistaJugador2){
-                  partidoJugadorRegistrado.partido.cuotaRachaJugador1 =
-                  (partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador1 +
-                    partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador2) /
-                  (partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador1 +
-                    (partidoJugadorRegistrado.partido.rachaPartidosJugadosJugador2 -
-                      partidoJugadorRegistrado.partido.rachaPartidosGanadosJugador2));
+                if (partidoPistaJugador1.key === partidoPistaJugador2.key) {
+                  const cuotaTotalPistaJugador1 =
+                    (partidoPistaJugador1.totalPartidosJugadosJugador1 +
+                      partidoPistaJugador2.totalPartidosJugadosJugador2) /
+                    (partidoPistaJugador1.totalPartidosGanadosJugador1 +
+                      (partidoPistaJugador2.totalPartidosJugadosJugador2 -
+                        partidoPistaJugador2.totalPartidosGanadosJugador2));
+                  const cuotaTotalPistaJugador2 =
+                    (partidoPistaJugador2.totalPartidosJugadosJugador2 +
+                      partidoPistaJugador1.totalPartidosJugadosJugador1) /
+                    (partidoPistaJugador2.totalPartidosGanadosJugador2 +
+                      (partidoPistaJugador1.totalPartidosJugadosJugador1 -
+                        partidoPistaJugador1.totalPartidosGanadosJugador1));
 
+                  partidoJugadorRegistrado.partido.cuotaTotalPista.push({
+                    pista: partidoPistaJugador1.key,
+                    cuotaTotalPistaJugador1: cuotaTotalPistaJugador1.toFixed(2),
+                    cuotaTotalPistaJugador2: cuotaTotalPistaJugador2.toFixed(2),
+                  });
                 }
-
               }
-            );*/
+            );
           });
 
           partidoJugadorRegistrado.partido.jugador1HistoricoPartidosAgrupados =

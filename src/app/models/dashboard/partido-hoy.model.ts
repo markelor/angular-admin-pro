@@ -5,6 +5,11 @@ export class _PartidoHoy {
   circuito: number;
   cuotaRachaJugador1: string;
   cuotaRachaJugador2: string;
+  cuotaTotalPista: {
+    pista: string;
+    cuotaTotalPistaJugador1: string;
+    cuotaTotalPistaJugador2: string;
+  }[];
   diferenciaPuntos: number;
   ganador: string;
   horaInicio: string;
