@@ -58,7 +58,6 @@ export class DashboardComponent implements OnInit {
     this.partidoService
       .cargarPartidosDiarios(estrategia)
       .subscribe((partidosJugadoresRegistrados: _Apuesta[]) => {
-        console.log(partidosJugadoresRegistrados);
         this.cargando = false;
         partidosJugadoresRegistrados.forEach((partidoJugadorRegistrado) => {
           //Racha ultimos 10 partidos de cada jugador
@@ -89,8 +88,6 @@ export class DashboardComponent implements OnInit {
               ) {
                 rachaPartidosJugadosJugador1++;
                 //contar partidas ganadas
-                console.log(partidoJugadorRegistrado.partido.jugador1.nombre);
-                console.log(jugador1HistoricoPartido.ganador);
                 if (
                   partidoJugadorRegistrado.partido.jugador1.nombre ===
                   jugador1HistoricoPartido.ganador
