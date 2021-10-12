@@ -39,6 +39,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
       cicloHasta: new FormControl(60, Validators.required),
       intervalo: new FormControl(5, Validators.required),
       repeticiones: new FormControl(5, Validators.required),
+      puntosNatal: new FormControl(1, Validators.required)
     });
     this.cargarEstrategias();
   }
@@ -50,10 +51,10 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
       .subscribe((estrategias) => {
         this.cargando = false;
         this.estrategias = estrategias;
+        console.log(estrategias);
       });
   }
   cargarHistoricoPartidos(estrategia:Estrategia) {
-    console.log(estrategia);
     this.cargando = true;
     this.historicoPartidoService
       .cargarHistoricoPartidos(estrategia)
@@ -143,7 +144,6 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
     this.historicoPartidoService
       .aprenderCompatibilidades(this.estrategiaForm.value)
       .subscribe((historicoPartidos) => {
-
         console.log(historicoPartidos);
         this.cargando = false;
         this.historicoPartidos = historicoPartidos;

@@ -15,17 +15,12 @@
         <form class="form-horizontal p-t-20" [formGroup]="estrategiaForm">
           <!--Estrategia-->
           <div class="form-group row">
-            <label for="estrategia" class="col-sm-3 control-label"
-              >Estrategia</label
-            >
+            <label for="estrategia" class="col-sm-3 control-label">Estrategia</label>
             <div class="col-sm-9">
               <div class="input-group">
                 <select class="form-control" formControlName="estrategia">
                   <option value="">Seleccione estrategia</option>
-                  <option
-                    *ngFor="let estrategia of estrategias"
-                    [ngValue]="estrategia"
-                  >
+                  <option *ngFor="let estrategia of estrategias" [ngValue]="estrategia">
                     {{ estrategia.nombre }}
                   </option>
                 </select>
@@ -37,12 +32,7 @@
             <label for="cicloDesde" class="col-sm-3 control-label">Ciclo Desde</label>
             <div class="col-sm-9">
               <div class="input-group">
-                <input
-                  type="text"
-                  formControlName="cicloDesde"
-                  class="form-control"
-                  id="cicloDesde"
-                />
+                <input type="text" formControlName="cicloDesde" class="form-control" id="cicloDesde" />
               </div>
             </div>
           </div>
@@ -51,12 +41,7 @@
             <label for="cicloHasta" class="col-sm-3 control-label">Ciclo Hasta</label>
             <div class="col-sm-9">
               <div class="input-group">
-                <input
-                  type="text"
-                  formControlName="cicloHasta"
-                  class="form-control"
-                  id="cicloHasta"
-                />
+                <input type="text" formControlName="cicloHasta" class="form-control" id="cicloHasta" />
               </div>
             </div>
           </div>
@@ -65,12 +50,7 @@
             <label for="intervalo" class="col-sm-3 control-label">Intervalo</label>
             <div class="col-sm-9">
               <div class="input-group">
-                <input
-                  type="text"
-                  formControlName="intervalo"
-                  class="form-control"
-                  id="intervalo"
-                />
+                <input type="text" formControlName="intervalo" class="form-control" id="intervalo" />
               </div>
             </div>
           </div>
@@ -79,24 +59,24 @@
             <label for="repeticiones" class="col-sm-3 control-label">Repeticiones</label>
             <div class="col-sm-9">
               <div class="input-group">
-                <input
-                  type="text"
-                  formControlName="repeticiones"
-                  class="form-control"
-                  id="repeticiones"
-                />
+                <input type="text" formControlName="repeticiones" class="form-control" id="repeticiones" />
+              </div>
+            </div>
+          </div>
+          <!--Puntos Natal-->
+          <div class="form-group row">
+            <label for="puntosNatal" class="col-sm-3 control-label">Puntos Natal</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input type="text" formControlName="puntosNatal" class="form-control" id="puntosNatal" />
               </div>
             </div>
           </div>
           <div class="form-group row">
             <div class="col-sm-12">
-              <button
-                (click)="
+              <button (click)="
                   cargarHistoricoPartidos(estrategiaForm.value.estrategia)
-                "
-                type="button"
-                class="btn btn-danger waves-effect waves-light right"
-              >
+                " type="button" class="btn btn-danger waves-effect waves-light right">
                 <i class="fa fa-trash"></i>
                 Calcular historico partidos
               </button>
@@ -104,13 +84,9 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-12">
-              <button
-                (click)="
+              <button (click)="
                   aprenderCompatibilidades()
-                "
-                type="button"
-                class="btn btn-danger waves-effect waves-light right"
-              >
+                " type="button" class="btn btn-danger waves-effect waves-light right">
                 <i class="fa fa-trash"></i>
                 Calcular compatibilidades
               </button>
@@ -118,44 +94,37 @@
           </div>
         </form>
 
-        <!--<div class="table-responsive">
+        <!--Ver estrategias-->
+        <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th class="w100">Nombre</th>
                 <th>Descripcion</th>
-                <th class="w100 text-nowrap">Acciones</th>
+                <th class="w100 text-nowrap">Estado</th>
               </tr>
             </thead>
             <tbody>
-              <tr
-                *ngFor="
-                  let historicoPartido of historicoPartidos;
-                  let i = index
-                "
-              >
+              <tr *ngFor="let estrategia of estrategias let i=index">
                 <td>
-                  {{ historicoPartido.nombre }}
+                  {{ estrategia.nombre }}
                 </td>
                 <td>
-                  {{ historicoPartido.descripcion }}
-                </td>-->
-        <!--<td class="text-nowrap text-center">
-                  <a [routerLink]="['/configuraciones','historicoPartido', historicoPartido._id ]" data-toggle="tooltip"
-                    data-original-title="Editar">
-                    <i class="fa fa-pencil text-inverse m-r-10"></i>
-                  </a>
-
-                  <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"
-                    (click)="borrarHistoricoPartido( historicoPartido )">
-                    <i class="fa fa-close text-danger"></i>
-                  </a>
-                </td>-->
-        <!--</tr>
+                  {{ estrategia.descripcion }}
+                </td>
+                <td *ngIf="estrategia.aprendiendo" class="text-nowrap text-center">
+                  Aprendiendo
+                </td>
+                <td *ngIf="!estrategia.aprendiendo" class="text-nowrap text-center">
+                  Parado
+                </td>
+              </tr>
             </tbody>
           </table>
-        </div>-->
+        </div>
       </div>
     </div>
   </div>
+
+
 </div>
