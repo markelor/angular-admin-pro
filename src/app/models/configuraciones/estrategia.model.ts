@@ -28,6 +28,7 @@ export class Estrategia {
     public cuerposFirmamentoTransitos: string,
     public compatibilidadesPlanetarias: _CompatibilidadesPlanetarias,
     public relacionesPlanetarias: string,
+    public puntosNatal:number,
     public _id?: string,
     public usuario?: _EstrategiaUser
   ) {}

@@ -27,7 +27,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
     private modalImagenService: ModalImagenService,
     private busquedasService: BusquedasService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnDestroy(): void {
   }
@@ -51,10 +51,11 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
       .subscribe((estrategias) => {
         this.cargando = false;
         this.estrategias = estrategias;
-        console.log(estrategias);
+
       });
   }
-  cargarHistoricoPartidos(estrategia:Estrategia) {
+  cargarHistoricoPartidos(estrategia: Estrategia) {
+    estrategia.puntosNatal = this.estrategiaForm.controls.puntosNatal.value;
     this.cargando = true;
     this.historicoPartidoService
       .cargarHistoricoPartidos(estrategia)
@@ -91,7 +92,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
             if (
               jugador1Puntos > jugador2Puntos &&
               historicoPartido.partido.ganador ===
-                historicoPartido.partido.jugador1.nombre &&
+              historicoPartido.partido.jugador1.nombre &&
               Math.abs(jugador1Puntos - jugador2Puntos) > 60
             ) {
               arrayAcierto.push(historicoPartido);
@@ -99,7 +100,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
             } else if (
               jugador1Puntos < jugador2Puntos &&
               historicoPartido.partido.ganador ===
-                historicoPartido.partido.jugador2.nombre &&
+              historicoPartido.partido.jugador2.nombre &&
               Math.abs(jugador2Puntos - jugador1Puntos) > 60
             ) {
               arrayAcierto.push(historicoPartido);
@@ -107,7 +108,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
             } else if (
               jugador1Puntos > jugador2Puntos &&
               historicoPartido.partido.ganador ===
-                historicoPartido.partido.jugador2.nombre &&
+              historicoPartido.partido.jugador2.nombre &&
               Math.abs(jugador1Puntos - jugador2Puntos) > 60
             ) {
               arrayFallo.push(historicoPartido);
@@ -115,7 +116,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
             } else if (
               jugador1Puntos < jugador2Puntos &&
               historicoPartido.partido.ganador ===
-                historicoPartido.partido.jugador1.nombre &&
+              historicoPartido.partido.jugador1.nombre &&
               Math.abs(jugador2Puntos - jugador1Puntos) > 60
             ) {
               arrayFallo.push(historicoPartido);
@@ -127,7 +128,7 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
         );
         console.log('----------------------------------');
         console.log('acierto', acierto),
-        console.log('fallo', fallo);
+          console.log('fallo', fallo);
         console.log('empate', empate);
         console.log(arrayFallo);
 
@@ -135,9 +136,9 @@ export class HistoricoPartidosComponent implements OnInit, OnDestroy {
         this.cargando = false;
         this.historicoPartidos = historicoPartidos;
 
-   });
+      });
 
-}
+  }
 
   aprenderCompatibilidades() {
     this.cargando = true;
